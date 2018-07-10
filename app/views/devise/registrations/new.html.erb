@@ -1,0 +1,46 @@
+<section class="hero is-success is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Sign up</h3>
+                <p class="subtitle has-text-grey">Please sign up to proceed.</p>
+                <div class="box">
+                    <figure class="avatar">
+                        <%= image_tag "logo-circle.png" %>
+                    </figure>
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <div class="notification is-danger"><%= alert %><%= devise_error_messages! %></div>
+                        <div class="field">
+                            <div class="control">
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
+                                    <% if @minimum_password_length %>
+                                        <em>(
+                                            <%= @minimum_password_length %> characters minimum)</em>
+                                        <% end %>
+                                            <br />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-large", placeholder: "Password Confirmation" %>
+                            </div>
+                        </div>
+
+
+                        <%= f.submit "Sign up", class:"button is-block is-info is-large is-fullwidth" %>
+                    <% end %>
+                </div>
+                <p class="has-text-grey">
+                    <%= render "devise/shared/links" %>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
