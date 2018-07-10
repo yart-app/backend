@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description:
+A community for yarn art lovers, where crocheters and knitters can share their work, their patterns, thier questions and ideas.
 
-Things you may want to cover:
+## Project state:
+Under establishment.
 
-* Ruby version
+## Contribution state:
+Contribution to this project will be always welcoming, however right now we need your contribution on ideas more than technical stuff.
 
-* System dependencies
+## Technical details:
 
-* Configuration
+### Ruby version:
+2.4.2p198
 
-* Database creation
+### System dependencies:
+* Devise.
 
-* Database initialization
+### Configuration:
+...
 
-* How to run the test suite
+### Database creation:
+Right now we use Sqlite so all you need is to run `rails db:migrate` in order to create the db.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Database initialization:
+...
 
-* Deployment instructions
-
-* ...
+### How to run the test suite:
+`bundle exe rspec`
