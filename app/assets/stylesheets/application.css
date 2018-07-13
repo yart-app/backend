@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+html,
+body {
+    font-family: 'Open Sans', serif;
+    font-size: 14px;
+    font-weight: 300;
+    background: url(background.jpg) no-repeat fixed center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-item img {
+    max-height: 70px;
+}
+
+.container.wrapper {
+    padding: 10px;
+}
+
+.card {
+    min-height: 500px;
+}
+
+.card-image {
+    overflow: hidden;
+}
