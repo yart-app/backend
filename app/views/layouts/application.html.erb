@@ -19,36 +19,38 @@
 <body>
     <!-- START NAV -->
     <nav class="navbar">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="../">
-                <%= image_tag "logo.png", alt: "Yart Logo" %>
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item">
-                    Projects
+        <div class="container wrapper">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    <%= image_tag "logo.png", alt: "Yart Logo" %>
                 </a>
-                <%= link_to "Tools", tools_url, class: "navbar-item" %>
-                <a class="navbar-item">
-                    Friends
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Account
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">
+                        Projects
                     </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Profile
+                    <%= link_to "Tools", tools_url, class: "navbar-item" %>
+                    <a class="navbar-item">
+                        Friends
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Account
                         </a>
-                        <hr class="navbar-divider">
-                        <div class="navbar-item">
-                            Logout
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                Profile
+                            </a>
+                            <hr class="navbar-divider">
+                            <div class="navbar-item">
+                                Logout
+                            </div>
                         </div>
                     </div>
                 </div>
