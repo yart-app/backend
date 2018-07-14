@@ -48,9 +48,7 @@
                                 Profile
                             </a>
                             <hr class="navbar-divider">
-                            <div class="navbar-item">
-                                Logout
-                            </div>
+                            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
                         </div>
                     </div>
                 </div>
