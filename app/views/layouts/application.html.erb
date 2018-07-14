@@ -15,9 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-
-<body>
     <!-- START NAV -->
+    <% if user_signed_in? %>
+    <body class="signed-in">
     <nav class="navbar">
         <div class="container wrapper">
             <div class="navbar-brand">
@@ -57,6 +57,9 @@
             </div>
         </div>
     </nav>
+    <% else %>
+        <body class="signed-out">
+    <% end %>
     <section class="section">
         <div class="container wrapper">
             <%= yield %>

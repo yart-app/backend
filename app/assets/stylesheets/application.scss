@@ -19,12 +19,19 @@ body {
     font-family: 'Open Sans', serif;
     font-size: 14px;
     font-weight: 300;
+}
+
+body.signed-in {
     background: url(background.jpg) no-repeat fixed center center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+body.signed-out {
+    background: #fce6e6;
 }
 
 .navbar-item img {
