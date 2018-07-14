@@ -36,9 +36,13 @@ body {
 }
 
 .card {
-    min-height: 500px;
+    height: 100%;
 }
 
 .card-image {
     overflow: hidden;
+}
+
+.modal.is-active .modal-background {
+    opacity: 0.8;
 }
