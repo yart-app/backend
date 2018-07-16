@@ -12,7 +12,7 @@ class ToolsController < ApplicationController
     @tool.user = current_user
 
     unless @tool.save
-      @errors = @tool.errors.full_messages
+      flash[:errors] = @tool.errors.full_messages
     end
 
     redirect_to tools_url
