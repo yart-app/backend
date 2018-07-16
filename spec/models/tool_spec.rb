@@ -8,6 +8,10 @@ RSpec.describe Tool, type: :model do
 
     it 'validates the presence of images' do
       is_expected.to validate_presence_of(:images)
+    it 'validates the length of name' do
+      is_expected.to validate_length_of(:name).is_at_most(20)
+    end
+
     end
 
     it 'validates that there is at least one image' do

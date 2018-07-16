@@ -1,7 +1,8 @@
 class Tool < ApplicationRecord
   ## Validation
   validates :name,
-            presence: true
+            presence: true,
+            length: { maximum: 20 }
 
   validates :images,
             presence: true,
