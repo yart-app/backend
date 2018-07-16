@@ -1,5 +1,5 @@
 # README
-
+[Travis CI Status](https://travis-ci.com/EhsanZ/yart.svg?branch=master)
 ## Description:
 A community for yarn art lovers, where crocheters and knitters can share their work, their patterns, thier questions and ideas.
 
