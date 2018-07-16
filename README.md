@@ -1,5 +1,5 @@
 # README
-[Travis CI Status](https://travis-ci.com/EhsanZ/yart.svg?branch=master)
+![Travis CI Status](https://travis-ci.com/EhsanZ/yart.svg?branch=master)
 ## Description:
 A community for yarn art lovers, where crocheters and knitters can share their work, their patterns, thier questions and ideas.
 
@@ -12,7 +12,7 @@ Contribution to this project will be always welcoming, however right now we need
 ## Technical details:
 
 ### Ruby version:
-2.4.2p198
+2.4.2
 
 ### System dependencies:
 * Devise.
