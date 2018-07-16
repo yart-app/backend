@@ -1,7 +1,7 @@
 addons:
   postgresql: 9.6
 before_script:
-  - psql -c 'create database yarn_test;' -U postgres
+  - psql -c 'create database yart_test;' -U postgres
 language: ruby
 rvm:
   - 2.4.2
