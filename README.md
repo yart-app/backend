@@ -1,5 +1,6 @@
 # README
-
+![Travis CI Status](https://travis-ci.com/EhsanZ/yart.svg?branch=master)
+[![codebeat badge](https://codebeat.co/badges/ca5da6da-5a47-48d9-b7c3-bd61ceebe3e4)](https://codebeat.co/projects/github-com-ehsanz-yart-feature-allow_users_to_manage_projects)
 ## Description:
 A community for yarn art lovers, where crocheters and knitters can share their work, their patterns, thier questions and ideas.
 
@@ -12,7 +13,7 @@ Contribution to this project will be always welcoming, however right now we need
 ## Technical details:
 
 ### Ruby version:
-2.4.2p198
+2.4.2
 
 ### System dependencies:
 * Devise.
