@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_122258) do
+ActiveRecord::Schema.define(version: 2018_07_14_205704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,26 @@ ActiveRecord::Schema.define(version: 2018_07_12_122258) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "text"
+    t.bigint "project_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_posts_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "pattern_url"
+    t.string "category"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
   create_table "tools", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -44,6 +64,8 @@ ActiveRecord::Schema.define(version: 2018_07_12_122258) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_tools_on_project_id"
     t.index ["user_id"], name: "index_tools_on_user_id"
   end
 
@@ -64,5 +86,8 @@ ActiveRecord::Schema.define(version: 2018_07_12_122258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "projects"
+  add_foreign_key "projects", "users"
+  add_foreign_key "tools", "projects"
   add_foreign_key "tools", "users"
 end
