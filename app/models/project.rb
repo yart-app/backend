@@ -1,9 +1,9 @@
 class Project < ApplicationRecord
   module Status
-    NEW = 'new'.freeze
-    UNDER_PROGRESS = 'under progress'.freeze
-    CANCELED = 'canceled'.freeze
-    DONE = 'done'.freeze
+    NEW = "new".freeze
+    UNDER_PROGRESS = "under progress".freeze
+    CANCELED = "canceled".freeze
+    DONE = "done".freeze
 
     OPTIONS = [
       Status::NEW,
@@ -14,9 +14,9 @@ class Project < ApplicationRecord
   end
 
   module Category
-    CROCHET = 'Crochet'.freeze
-    KNITTING = 'Knitting'.freeze
-    WEAVING = 'Weaving'.freeze
+    CROCHET = "Crochet".freeze
+    KNITTING = "Knitting".freeze
+    WEAVING = "Weaving".freeze
 
     OPTIONS = [
       Category::CROCHET,

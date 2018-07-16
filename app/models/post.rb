@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   # Custom validators
   def content_presence
-    errors.add(:base, 'a post should have content') unless content?
+    errors.add(:base, "a post should have content") unless content?
   end
 
   def content?
