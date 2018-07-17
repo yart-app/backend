@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<% if user_signed_in? %>
+<html  class="signed-in">
+<% else %>
+<html  class="signed-out">
+<% end %>
+<head>
     <title>Yart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,10 +15,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+</head>
+    <body>
+    <!-- START NAV -->
+    <% if user_signed_in? %>
+    <nav class="navbar">
+        <div class="container wrapper">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    <%= image_tag "logo.png", alt: "Yart Logo" %>
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">
+                        Projects
+                    </a>
+                    <%= link_to "Tools", tools_url, class: "navbar-item" %>
+                    <a class="navbar-item">
+                        Friends
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Account
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                Profile
+                            </a>
+                            <hr class="navbar-divider">
+                            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <% end %>
+    <section class="section">
+        <div class="container wrapper">
+            <%= yield %>
+        </div>
+    </section>
+</body>
 </html>

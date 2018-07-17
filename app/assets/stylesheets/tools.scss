@@ -1,0 +1,18 @@
+// Place all the styles related to the tools controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.field-file {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.field-file div {
+    margin: 0 5px;
+}
+
+.uploaded-image {
+    width: 120px;
+    height: auto;
+}
