@@ -1,9 +1,0 @@
-container:
-  image: ruby:2.4.2
-
-rspec_task:
-  bundle_cache:
-    folder: /usr/local/bundle
-    fingerprint_script: cat Gemfile.lock
-    populate_script: bundle install
-  rspec_script: bundle exec rspec
