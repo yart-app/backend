@@ -68,3 +68,6 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # Added at 2018-07-17 00:13:16 +0300 by ehsan:
 gem "rubocop", "~> 0.58.1"
+
+# Added at 2018-07-17 07:53:11 +0300 by ehsan:
+gem "rubocop-rspec", "~> 1.27"

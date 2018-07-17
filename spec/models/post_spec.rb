@@ -7,6 +7,6 @@ RSpec.describe Post, type: :model do
 
   it "validates that the post has either an image or text or both" do
     post = FactoryBot.build(:post, text: "")
-    expect(post).to_not be_valid
+    expect(post).not_to be_valid
   end
 end

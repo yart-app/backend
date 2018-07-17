@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    text Faker::OnePiece.quote
+    text { Faker::OnePiece.quote }
     association :project
 
     factory :post_with_image do
