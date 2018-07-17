@@ -446,6 +446,9 @@ Layout/InitialIndentation:
     Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: false
 
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
 # Lint
 
 Lint/AmbiguousOperator:
