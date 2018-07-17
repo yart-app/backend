@@ -4,6 +4,15 @@
             <div class="content">
                 <h4>New Tool:</h4>
                 <div class="card-image">
+                    <% if flash[:errors] %>
+                        <div class="notification is-danger">
+                            <ul>
+                                <% flash[:errors].each do |m| %>
+                                    <li><%= m %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
                     <%= form_for(@tool, url: {action: "create"}) do |f| %>
                         <div class="field">
                             <div class="control">

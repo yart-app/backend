@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
-
+<% if user_signed_in? %>
+<html  class="signed-in">
+<% else %>
+<html  class="signed-out">
+<% end %>
 <head>
     <title>Yart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,46 +18,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-
-<body>
+    <body>
     <!-- START NAV -->
+    <% if user_signed_in? %>
     <nav class="navbar">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="../">
-                <%= image_tag "logo.png", alt: "Yart Logo" %>
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item">
-                    Projects
+        <div class="container wrapper">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    <%= image_tag "logo.png", alt: "Yart Logo" %>
                 </a>
-                <%= link_to "Tools", tools_url, class: "navbar-item" %>
-                <a class="navbar-item">
-                    Friends
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Account
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">
+                        Projects
                     </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Profile
+                    <%= link_to "Tools", tools_url, class: "navbar-item" %>
+                    <a class="navbar-item">
+                        Friends
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Account
                         </a>
-                        <hr class="navbar-divider">
-                        <div class="navbar-item">
-                            Logout
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                Profile
+                            </a>
+                            <hr class="navbar-divider">
+                            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+    <% end %>
     <section class="section">
         <div class="container wrapper">
             <%= yield %>
