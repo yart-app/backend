@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :pattern_url
       t.string :category
-      t.string :status, default: "new"
+      t.string :status, default: "New"
       t.references :user, foreign_key: true
 
       t.timestamps
