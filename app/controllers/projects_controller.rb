@@ -8,5 +8,16 @@ class ProjectsController < ApplicationController
     @statuses = Project::Status::OPTIONS
   end
 
+  def create
+    @project = Project.new(project_params)
+    @project.user = current_user
+
+    flash[:errors] = @project.errors.full_messages unless @project.save
+
+    redirect_to projects_url
+  end
+
+  def project_params
+    params.require(:project).permit(:title, :pattern_url, :category, :status)
   end
 end
