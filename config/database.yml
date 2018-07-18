@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: yart_production
+  database: <%= ENV['YART_DATABASE_NAME'] %>
+  username: <%= ENV['YART_DATABASE_USER'] %>
+  password: <%= ENV['YART_DATABASE_PASSWORD'] %>
