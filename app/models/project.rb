@@ -1,9 +1,9 @@
 class Project < ApplicationRecord
   module Status
-    NEW = "new".freeze
-    UNDER_PROGRESS = "under progress".freeze
-    CANCELED = "canceled".freeze
-    DONE = "done".freeze
+    NEW = "New".freeze
+    UNDER_PROGRESS = "Under progress".freeze
+    CANCELED = "Canceled".freeze
+    DONE = "Done".freeze
 
     OPTIONS = [
       Status::NEW,
