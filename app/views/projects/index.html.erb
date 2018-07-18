@@ -1,0 +1,83 @@
+<div class="box modal-button">
+    <div class="content">
+        <h4>New Project:</h4>
+    <% if flash[:errors] %>
+        <div class="notification is-danger">
+            <ul>
+                <% flash[:errors].each do |m| %>
+                    <li><%= m %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <%= form_for(@project, url: {action: "create"}) do |f| %>
+        <div class="field">
+            <div class="control">
+                <%= f.text_field :title, class: "input", placeholder: "Name" %>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <%= f.text_field :pattern_url, class: "input", placeholder: "URL" %>
+            </div>
+        </div>
+        <div class="field">
+            <div class="select">
+              <%= f.select :category do %>
+                <% @categories.each do |c| -%>
+                  <%= content_tag(:option, c, value: c) %>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+        <div class="field">
+            <div class="select">
+              <%= f.select :status do %>
+                <% @statuses.each do |s| -%>
+                  <%= content_tag(:option, s, value: s) %>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <%= f.submit "Create", class: "button is-link" %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+    </div>
+    <div class="box content">
+      <% @projects.each do |project| %>
+        <article class="post">
+        <h4>
+        <%= link_to project.title, project_url(project) %>
+        </h4>
+        <div class="media">
+          <div class="media-left">
+          <% if project.posts[0] %>
+            <p class="image is-32x32">
+              <%= image_tag project.posts[0].image %>
+            </p>
+          <% end %>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <%= project.created_at.strftime("%Y-%m-%d") %> &nbsp;
+                <span class="tag"><%= project.category %></span>
+                <span class="tag <%= status_class(project.status) %>">
+                  <%= project.status %>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="media-right">
+            <span class="has-text-grey-light">
+              <i class="fa fa-file"></i> <%= project.posts.count %>
+            </span>
+          </div>
+        </div>
+        </article>
+    <% end %>
+</div>
