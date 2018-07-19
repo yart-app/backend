@@ -11,4 +11,4 @@ amazon:
   access_key_id: <%= ENV['ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['SECRET_ACCESS_KEY'] %>
   bucket: yart
-  region: us-east-1
+  region: eu-west-1
