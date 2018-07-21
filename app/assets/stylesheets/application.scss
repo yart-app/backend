@@ -1,6 +1,7 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
+
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
@@ -14,6 +15,17 @@
  *= require_self
  */
 
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
+$plum: #DF5977;
+$pale_goldenrod:#EBDDB5;
+$khaki: #BAA072;
+$beige: #EEDED4;
+$dim_gray: #826C55;
+$primary: $plum;
+$link: $khaki;
+$light: $beige;
+@import "bulma/bulma";
 html,
 body {
     font-family: 'Open Sans', serif;
