@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <div class="container wrapper">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <%= image_tag "logo.png", alt: "Yart Logo" %>
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <%= link_to "Projects", projects_url, class: "navbar-item" %>
+                <%= link_to "Tools", tools_url, class: "navbar-item" %>
+                <a class="navbar-item">
+                    Friends
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Account
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Profile
+                        </a>
+                        <hr class="navbar-divider">
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
