@@ -1,5 +1,7 @@
 {
   "name": "yart",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma": "^0.7.1"
+  }
 }
