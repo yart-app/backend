@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :tools, except: :new
-  resources :projects, except: :new
+  resources :projects
 end
