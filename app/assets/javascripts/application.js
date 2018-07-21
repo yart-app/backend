@@ -14,6 +14,18 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('turbolinks:load', function () {
+    $(".collapsible").click(function () {
+        var content = this.nextElementSibling;
+        var contentToHide = content.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            contentToHide.style.display = "";
+        } else {
+            content.style.display = "block";
+            contentToHide.style.display = "none";
+        }
+    });
+
     // The following code is based off a toggle menu by @Bradcomp
     // source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1
     var burger = document.querySelector('.burger');
