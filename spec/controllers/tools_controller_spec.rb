@@ -17,13 +17,23 @@ RSpec.describe ToolsController, type: :request do
       expect(response).to render_template(:index)
     end
 
-    it "assigns a new instance of tool to @tool" do
-      expect(assigns(:tool)).to be_a_new(Tool)
-    end
-
     it "gets all user's tools" do
       user_tools = user.tools.order(created_at: "desc").to_a
       expect(assigns(:tools)).to eql user_tools
+    end
+  end
+
+  describe "#new" do
+    before do
+      get "/tools/new"
+    end
+
+    it "renders tools index view" do
+      expect(response).to render_template(:new)
+    end
+
+    it "assigns a new instance of tool to @tool" do
+      expect(assigns(:tool)).to be_a_new(Tool)
     end
   end
 

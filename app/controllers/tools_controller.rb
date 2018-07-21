@@ -3,6 +3,9 @@ class ToolsController < ApplicationController
 
   def index
     @tools = Tool.where(user: current_user).order(created_at: "desc").to_a
+  end
+
+  def new
     @tool = Tool.new
   end
 
@@ -10,10 +13,14 @@ class ToolsController < ApplicationController
     @tool = Tool.new(tool_params)
     @tool.images.attach(params["tool"]["images"])
     @tool.user = current_user
+    @tool.save
 
-    flash[:errors] = @tool.errors.full_messages unless @tool.save
-
-    redirect_to tools_url
+    if @tool.errors.empty?
+      redirect_to tools_url
+    else
+      flash[:errors] = @tool.errors.full_messages
+      redirect_to new_tool_url
+    end
   end
 
   def tool_params
