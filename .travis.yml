@@ -10,3 +10,4 @@ script:
   - yarn install
   - bundle exec rubocop
   - bundle exec rspec
+  - yarn install
