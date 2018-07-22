@@ -28,7 +28,7 @@ RSpec.describe ProjectsController, type: :request do
       get "/projects/new"
     end
 
-    it "renders tools index view" do
+    it "renders projects index view" do
       expect(response).to render_template(:new)
     end
 
@@ -46,6 +46,22 @@ RSpec.describe ProjectsController, type: :request do
 
     it "assigns the user tools to @tools" do
       expect(assigns(:tools)).to eq(user.tools)
+    end
+  end
+
+  describe "#show" do
+    let!(:project) { user.projects[0] }
+
+    before do
+      get "/projects/#{project.id}"
+    end
+
+    it "renders a specific project show view" do
+      expect(response).to render_template(:show)
+    end
+
+    it "assigns the requested project to @project" do
+      expect(assigns(:project)).to eq(project)
     end
   end
 end

@@ -25,6 +25,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @project = Project.find_by(id: params[:id])
+  end
+
   def project_params
     params.require(:project).permit(:title,
                                     :pattern_url,
