@@ -26,6 +26,7 @@ $primary: $plum;
 $link: $khaki;
 $light: $beige;
 @import "bulma/bulma";
+@import "bulma-extensions/bulma-timeline/dist/css/bulma-timeline";
 html,
 body {
     font-family: 'Open Sans', serif;
