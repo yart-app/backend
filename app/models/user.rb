@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :tools
   has_many :projects
   has_many :posts
+
+  def ordered_projects
+    projects.order(created_at: "desc")
+  end
 end

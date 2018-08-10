@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = Project.where(user: current_user).order(created_at: "desc").to_a
+    @projects = current_user.ordered_projects.to_a
   end
 
   def new
