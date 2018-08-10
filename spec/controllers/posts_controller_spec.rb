@@ -14,6 +14,11 @@ RSpec.describe PostsController, type: :request do
         change(Post, :count).by(1),
       )
     end
+
+    it "redirects to the root url" do
+      post "/posts", params: { post: FactoryBot.attributes_for(:post) }
+      expect(response).to redirect_to root_url
+    end
   end
 
 end
