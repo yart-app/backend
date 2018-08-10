@@ -28,4 +28,23 @@ RSpec.describe Project, type: :model do
     project = FactoryBot.build(:project, category: "")
     expect(project).to be_valid
   end
+
+  describe "#update_status" do
+    let!(:project) { FactoryBot.create(:project, status: Project::Status::NEW) }
+
+    it "updates status if it's valid and returns true" do
+      expect(project.update_status(Project::Status::DONE)).to eq(true)
+    end
+  end
+
+  describe "#update_category" do
+    let!(:project) do
+      FactoryBot.create(:project, category: Project::Category::CROCHET)
+    end
+
+    it "updates category if it's valid and returns true" do
+      expect(project.update_category(Project::Category::WEAVING)).to eq(true)
+    end
+  end
+
 end
