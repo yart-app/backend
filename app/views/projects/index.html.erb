@@ -12,13 +12,6 @@
     <%= link_to project.title, project_url(project) %>
     </h4>
     <div class="media">
-      <div class="media-left">
-      <% if project.posts[0] %>
-        <p class="image is-32x32">
-          <%= image_tag project.posts[0].image %>
-        </p>
-      <% end %>
-      </div>
       <div class="media-content">
         <div class="content">
           <p>
