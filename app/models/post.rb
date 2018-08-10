@@ -13,6 +13,6 @@ class Post < ApplicationRecord
   end
 
   def content?
-    !text.blank? && image.attached?
+    !text.blank? || image.attached?
   end
 end
