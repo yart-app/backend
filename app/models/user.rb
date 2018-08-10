@@ -11,4 +11,10 @@ class User < ApplicationRecord
   def ordered_projects
     projects.order(created_at: "desc")
   end
+
+  def ordered_posts(include_auto_generated: true)
+    result = posts.order(created_at: "desc")
+    return result if include_auto_generated
+    result.where(auto_generated: false)
+  end
 end
