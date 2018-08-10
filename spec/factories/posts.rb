@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :post do
     text { Faker::OnePiece.quote }
+    auto_generated false
     association :project
 
     factory :post_with_image do

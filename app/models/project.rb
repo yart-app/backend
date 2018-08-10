@@ -43,4 +43,38 @@ class Project < ApplicationRecord
   validates :category,
             inclusion: { in: Category::OPTIONS },
             allow_blank: true
+
+  def update_status(new_status)
+    if new_status != status
+      if update(status: new_status)
+        return generate_post("status", new_status)
+      end
+    end
+    false
+  end
+
+  def update_category(new_category)
+    if new_category != category
+      if update(category: new_category)
+        return generate_post("category", new_category)
+      end
+      false
+    end
+  end
+
+  private
+
+  def generate_post(field_name, updated_value)
+    return if new_record?
+
+    post = posts.create(
+      auto_generated: true,
+      text: "The project got new #{field_name}",
+      user: user,
+      updated_value: updated_value,
+      updated_field: "category",
+    )
+
+    !post.new_record?
+  end
 end

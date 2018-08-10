@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project, except: %i[index new create]
 
   def index
-    @projects = Project.where(user: current_user).order(created_at: "desc").to_a
+    @projects = current_user.ordered_projects.to_a
   end
 
   def new
@@ -26,7 +27,34 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @categories = Project::Category::OPTIONS
+    @statuses = Project::Status::OPTIONS
+    @posts = @project.posts.to_a
+  end
+
+  def update_status
+    unless @project.update_status(params[:status])
+      flash[:errors] = @project.errors.full_messages
+      redirect_to project_path(@project)
+    end
+  end
+
+  def update_category
+    unless @project.update_category(params[:category])
+      flash[:errors] = @project.errors.full_messages
+      redirect_to project_path(@project)
+    end
+  end
+
+  private
+
+  def set_project
     @project = Project.find_by(id: params[:id])
+
+    if @project.nil?
+      flash[:errors] = ["Project was not found"]
+      redirect_back fallback_location: projects_path
+    end
   end
 
   def project_params

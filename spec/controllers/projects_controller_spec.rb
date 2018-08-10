@@ -49,6 +49,20 @@ RSpec.describe ProjectsController, type: :request do
     end
   end
 
+  describe "#create" do
+    it "creates project" do
+      params = { project: FactoryBot.attributes_for(:project) }
+      expect { post "/projects", params: params }.to(
+        change(Project, :count).by(1),
+      )
+    end
+
+    it "redirects to the root url" do
+      post "/projects", params: { project: FactoryBot.attributes_for(:project) }
+      expect(response).to redirect_to projects_url
+    end
+  end
+
   describe "#show" do
     let!(:project) { user.projects[0] }
 

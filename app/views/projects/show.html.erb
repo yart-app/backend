@@ -1,17 +1,32 @@
+<div class="level is-mobile">
+  <div class="level-left">
+  <h1 class="title has-text-light is-2">
+      <%= @project.title %>
+  </h1>
+  </div>
+</div>
+
+<%= render "update_fields" %>
+
 <div class="box content">
   <div class="timeline">
     <header class="timeline-header">
-      <span class="tag is-medium is-primary">New project</span>
+      <span class="tag is-medium is-success"><%= Project::Status::NEW%></span>
     </header>
     <div class="timeline-item">
-      <div class="timeline-marker"></div>
+      <div class="timeline-marker is-success is-icon">
+        <i class="fa fa-plus"></i>
+      </div>
       <div class="timeline-content">
         <p class="heading"><%= @project.created_at.strftime("%Y-%m-%d") %></p>
-        <p><%= @project.title %></p>
+        <p class="has-text-grey">The project just got created</p>
         <% unless @project.tools.empty? %>
           <p>Tools: <%= @project.tools[0].name %></p>
         <% end %>
       </div>
     </div>
+
+    <%= render "posts" %>
+    
   </div>
 </div>

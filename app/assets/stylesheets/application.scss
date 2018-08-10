@@ -79,3 +79,11 @@ html.signed-out {
     outline: none;
     font-size: 15px;
 }
+
+.image-upload>input {
+    display: none;
+}
+
+.image-upload>label {
+    cursor: pointer;
+}
