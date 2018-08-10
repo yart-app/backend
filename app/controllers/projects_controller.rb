@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project, except: %i[index new create]
 
   def index
     @projects = current_user.ordered_projects.to_a
@@ -26,7 +27,20 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @categories = Project::Category::OPTIONS
+    @statuses = Project::Status::OPTIONS
+    @posts = @project.posts.to_a
+  end
+
+  private
+
+  def set_project
     @project = Project.find_by(id: params[:id])
+
+    if @project.nil?
+      flash[:errors] = ["Project was not found"]
+      redirect_back fallback_location: projects_path
+    end
   end
 
   def project_params
