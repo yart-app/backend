@@ -32,6 +32,20 @@ class ProjectsController < ApplicationController
     @posts = @project.posts.to_a
   end
 
+  def update_status
+    unless @project.update_status(params[:status])
+      flash[:errors] = @project.errors.full_messages
+      redirect_to project_path(@project)
+    end
+  end
+
+  def update_category
+    unless @project.update_category(params[:category])
+      flash[:errors] = @project.errors.full_messages
+      redirect_to project_path(@project)
+    end
+  end
+
   private
 
   def set_project
