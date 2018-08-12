@@ -9,5 +9,7 @@ FactoryBot.define do
       pw_length = User.password_length.first
       ("0".."z").to_a.shuffle[0, pw_length].join
     end
+    name { Faker::name.first }
+    username { Faker::Internet.username }
   end
 end
