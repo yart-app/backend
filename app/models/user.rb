@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :projects
   has_many :posts
 
+  has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
+  has_many :followers, through: :follower_follows, source: :follower
+
+  has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
+  has_many :followees, through: :followee_follows, source: :followee
 
   validates :username,
             presence: true,
@@ -22,5 +27,18 @@ class User < ApplicationRecord
     result = posts.order(created_at: "desc")
     return result if include_auto_generated
     result.where(auto_generated: false)
+  end
+
+  def follow(target_user)
+    return false if follow?(target_user)
+    Follow.create!(follower: self, followee: target_user)
+  end
+
+  def follow?(user)
+    followees.exists?(user.id)
+  end
+
+  def followed_by?(user)
+    followers.exists?(user.id)
   end
 end
