@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4"><%= @user.name %></p>
+        <p class="subtitle is-6">@<%= @user.username %></p>
+      </div>
+
+      <% unless current_user.id === @user.id %>
+        <div class="media-right">
+            <button class="button is-primary">Follow</button>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="content">
+      <%= @user.bio %>
+      <br>
+      <time>Since: <%= @user.created_at.strftime("%Y-%m-%d") %></time>
+    </div>
+  </div>
+</div>
+
+<div class="columns features is-multiline" style="margin-top: 5rem;">
+  <%= render "posts" %>
+</div>
