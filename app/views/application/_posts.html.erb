@@ -1,0 +1,27 @@
+<% @posts.each do |post| %>
+    <div class="column is-4">
+        <div class="card is-shady">
+            <% if post.image.attached? %>
+            <div class="card-image">
+                <figure class="image">
+                    <%= image_tag post.image %>
+                </figure>
+            </div>
+            <% end %>
+
+            <div class="card-content">
+              <div class="content">
+                <% unless post.text.blank? %>
+                  <p>
+                      <%= post.text %>
+                  </p>
+                  <hr />
+                <% end %>
+                <% if post.project %>
+                  project: <%= post.project.title %>
+                <% end %>
+              </div>
+          </div>
+      </div>
+    </div>
+<% end %>
