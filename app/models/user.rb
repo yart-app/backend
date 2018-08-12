@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :projects
   has_many :posts
 
+
+  validates :username,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            format: { with: Regexp.new(/\A[a-z0-9_]{3,20}\z/) }
+
   def ordered_projects
     projects.order(created_at: "desc")
   end
