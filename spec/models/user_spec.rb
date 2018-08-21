@@ -69,4 +69,27 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#follow?" do
+    it "returns true if the current user doesn't follow the target user" do
+      expect(current_user.follow?(target_user)).to eq(false)
+    end
+
+    it "returns true if the current user follows the target user" do
+      current_user.follow(target_user)
+      current_user.reload
+      expect(current_user.follow?(target_user)).to eq(true)
+    end
+  end
+
+  describe "#followed_by?" do
+    it "returns true if the target user isn't followed by the current user" do
+      expect(target_user.followed_by?(current_user)).to eq(false)
+    end
+
+    it "returns true if the current user follows the target user" do
+      current_user.follow(target_user)
+      current_user.reload
+      expect(target_user.followed_by?(current_user)).to eq(true)
+    end
+  end
 end
