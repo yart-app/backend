@@ -92,4 +92,27 @@ RSpec.describe User, type: :model do
       expect(target_user.followed_by?(current_user)).to eq(true)
     end
   end
+
+  describe "#ordered_posts_with_friends_posts" do
+    before do
+      current_user.follow(target_user)
+    end
+
+    let(:current_user_posts) do
+      FactoryBot.create_list(:post, 2, user: current_user)
+    end
+
+    let(:target_user_posts) do
+      FactoryBot.create_list(:post, 3, user: target_user)
+    end
+
+    let(:posts) do
+      ids = [current_user.id, target_user.id]
+      Post.where(user_id: ids).order(created_at: "desc").to_a
+    end
+
+    it "returns current_user's and target_user's posts" do
+      expect(current_user.ordered_posts_with_friends_posts.to_a).to eq(posts)
+    end
+  end
 end

@@ -29,6 +29,11 @@ class User < ApplicationRecord
     result.where(auto_generated: false)
   end
 
+  def ordered_posts_with_friends_posts
+    ids = [id] + followees.ids
+    Post.where(user_id: ids, auto_generated: false).order(created_at: "desc")
+  end
+
   def follow(target_user)
     return false if follow?(target_user)
     follow = Follow.create(follower: self, followee: target_user)
