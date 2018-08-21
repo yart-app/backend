@@ -1,27 +1,26 @@
 <% @posts.each do |post| %>
-    <div class="column is-4">
-        <div class="card is-shady">
+    <div class="column is-one-third">
+        <div class="card large">
             <% if post.image.attached? %>
-            <div class="card-image">
-                <figure class="image">
-                    <%= image_tag post.image %>
-                </figure>
-            </div>
+                <div class="card-image">
+                    <figure class="image">
+                        <%= image_tag post.image %>
+                    </figure>
+                </div>
             <% end %>
-
             <div class="card-content">
-              <div class="content">
-                <% unless post.text.blank? %>
-                  <p>
-                      <%= post.text %>
-                  </p>
-                  <hr />
+                <div class="content">
+                    <% unless post.text.blank? %>
+                        <p>
+                            <%= post.text %>
+                        </p>
+                        <hr />
+                    <% end %>
+                </div>
+                <% if with_user_data %>
+                    <%= render "user_data", post: post %>
                 <% end %>
-                <% if post.project %>
-                  project: <%= post.project.title %>
-                <% end %>
-              </div>
-          </div>
-      </div>
+            </div>
+        </div>
     </div>
 <% end %>
