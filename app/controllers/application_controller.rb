@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       password
       password_confirmation
       remember_me
+      avatar
     ]
 
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
