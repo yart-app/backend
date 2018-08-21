@@ -41,6 +41,12 @@ class User < ApplicationRecord
     follow.destroyed?
   end
 
+  def toggle_follow(target_user)
+    if follow?(target_user)
+      unfollow(target_user)
+    else
+      follow(target_user)
+    end
   end
 
   def follow?(user)
