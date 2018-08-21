@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  let!(:current_user) { FactoryBot.create(:user) }
+  let!(:target_user) { FactoryBot.create(:user) }
+
   describe "validation" do
     it "validates the presence of username" do
       is_expected.to validate_presence_of(:username)
@@ -41,9 +44,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "#follow" do
-    let!(:current_user) { FactoryBot.create(:user) }
-    let!(:target_user) { FactoryBot.create(:user) }
-
     before do
       current_user.follow(target_user)
       current_user.reload
