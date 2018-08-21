@@ -31,7 +31,10 @@ class User < ApplicationRecord
 
   def follow(target_user)
     return false if follow?(target_user)
-    Follow.create!(follower: self, followee: target_user)
+    follow = Follow.create(follower: self, followee: target_user)
+    follow.persisted?
+  end
+
   end
 
   def follow?(user)
