@@ -1,0 +1,18 @@
+<div class="media">
+    <div class="media-left">
+        <figure class="image is-96x96">
+            <img src="https://i.imgsafe.org/a4/a4bb9acc5e.jpeg" alt="Image">
+        </figure>
+    </div>
+    <div class="media-content">
+        <p class="title is-4 no-padding"><%= post.user.name %></p>
+        <p>
+            <span class="title is-6">
+                <%= link_to "@#{post.user.username}", profile_url(post.user.id) %>
+            </span>
+        </p>
+        <% if post.project %>
+            <p class="subtitle is-6"><%= post.project.title %></p>
+        <% end %>
+    </div>
+</div>
