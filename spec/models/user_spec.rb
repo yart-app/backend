@@ -57,4 +57,16 @@ RSpec.describe User, type: :model do
       expect(current_user.follow(target_user)).to eq(false)
     end
   end
+
+  describe "#unfollow" do
+    it "returns false if target user is not followed by current user" do
+      expect(current_user.unfollow(target_user)).to eq(false)
+    end
+
+    it "returns true if target user is followed by current user" do
+      current_user.follow(target_user)
+      expect(current_user.unfollow(target_user)).to eq(true)
+    end
+  end
+
 end

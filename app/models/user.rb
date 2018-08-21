@@ -35,6 +35,12 @@ class User < ApplicationRecord
     follow.persisted?
   end
 
+  def unfollow(target_user)
+    return false unless follow?(target_user)
+    follow = Follow.find_by(follower: self, followee: target_user).destroy
+    follow.destroyed?
+  end
+
   end
 
   def follow?(user)
