@@ -87,3 +87,10 @@ html.signed-out {
 .image-upload>label {
     cursor: pointer;
 }
+
+@include from($tablet) {
+    figure.image {
+        max-height: 400px;
+        overflow: hidden;
+    }
+}

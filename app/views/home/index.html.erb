@@ -1,23 +1,4 @@
 <div class="columns features is-multiline" style="margin-top: 5rem;">
     <%= render "new_post" %>
-    <% @posts.each do |post| %>
-        <div class="column is-3">
-            <div class="card is-shady">
-                <% if post.image.attached? %>
-                <div class="card-image">
-                    <figure class="image">
-                        <%= image_tag post.image %>
-                    </figure>
-                </div>
-                <% end %>
-                <div class="card-content">
-                    <div class="content">
-                        <p>
-                            <%= post.text %>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% end %>
+    <%= render "posts" %>
 </div>

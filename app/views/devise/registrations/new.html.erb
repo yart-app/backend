@@ -18,6 +18,18 @@
 
                         <div class="field">
                             <div class="control">
+                                <%= f.text_field :username, class:"input is-large", placeholder: "User Name" %>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <%= f.text_field :name, class:"input is-large", placeholder: "Name" %>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
                                 <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
                                     <% if @minimum_password_length %>
                                         <em>(
