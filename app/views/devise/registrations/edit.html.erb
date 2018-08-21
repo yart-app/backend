@@ -1,43 +1,66 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="is-success is-fullheight">
+    <div class="has-text-centered">
+        <div class="column is-4 is-offset-4">
+            <div class="box">
+              <h3 class="title has-text-grey">Edit your profile</h3>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                  <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+                  <div class="field">
+                      <div class="control">
+                          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                      </div>
+                  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                  <div class="field">
+                      <div class="control">
+                          <%= f.text_field :username, class:"input is-large", placeholder: "User Name" %>
+                      </div>
+                  </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+                  <div class="field">
+                      <div class="control">
+                          <%= f.text_field :name, class:"input is-large", placeholder: "Name" %>
+                      </div>
+                  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
+                            <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <br />
+                        </div>
+                    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-large", placeholder: "Password Confirmation" %>
+                        </div>
+                    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+                <%= f.submit "Update", class:"button is-block is-info is-large is-fullwidth" %>
+              <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+              <%= link_to "Back", :back %>
+            </div>
+            <div class="box">
+              <p>
+                Unhappy?
+                <%=
+                  button_to "Cancel my account",
+                  registration_path(resource_name),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "button is-block is-danger is-large is-fullwidth"
+                %>
+              </p>
+            </div>
+        </div>
+    </div>
+</section>
