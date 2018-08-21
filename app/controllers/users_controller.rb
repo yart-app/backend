@@ -6,6 +6,14 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def toggle_follow
+    unless current_user.toggle_follow(@user)
+      return render json: { success: false }, status: :bad_request
+    end
+
+    render json: { success: true }, status: :ok
+  end
+
   private
 
   def set_user

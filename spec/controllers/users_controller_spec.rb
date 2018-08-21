@@ -23,12 +23,34 @@ RSpec.describe UsersController, type: :request do
     end
   end
 
-  describe "#follow" do
-    context "when the current user already follows the target user" do
-    end
+  describe "#toggle_follow" do
+    context "when toggle current_user.follow returns true" do
+      before do
+        post "/users/toggle_follow", params: { id: target_user.id }
+      end
 
-    context "when the current user doesn't follow the target user" do
+      it "responses with ok status" do
+        expect(response.status).to eq(200)
+      end
+
+      it "responses with success = true" do
+        expect(json["success"]).to eq(true)
+      end
     end
   end
 
+  context "when toggle current_user.follow returns false" do
+    before do
+      allow(current_user).to receive(:toggle_follow).and_return(false)
+      post "/users/toggle_follow", params: { id: target_user.id }
+    end
+
+    it "responses with ok status" do
+      expect(response.status).to eq(400)
+    end
+
+    it "responses with success = true" do
+      expect(json["success"]).to eq(false)
+    end
+  end
 end
