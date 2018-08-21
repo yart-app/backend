@@ -2,16 +2,16 @@ require "rails_helper"
 
 RSpec.describe UsersController, type: :request do
   let!(:current_user) { FactoryBot.create(:user) }
-  let!(:user) { FactoryBot.create(:user) }
+  let!(:target_user) { FactoryBot.create(:user) }
 
   before do
     sign_in current_user
-    FactoryBot.create_list(:post, 3, user: user)
+    FactoryBot.create_list(:post, 3, user: target_user)
   end
 
   describe "#show" do
     before do
-      get "/profile/#{user.id}"
+      get "/profile/#{target_user.id}"
     end
 
     it "renders profile's view" do
@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :request do
     end
 
     it "assigns the user's posts to @posts" do
-      expect(assigns(:posts)).to eq(user.posts)
+      expect(assigns(:posts)).to eq(target_user.posts)
     end
   end
 
