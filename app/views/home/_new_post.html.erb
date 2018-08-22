@@ -1,10 +1,12 @@
 <div class="column is-4">
-    <div class="card is-shady">
+    <div class="card is-shady" id="new-post-card">
         <%= form_for(@post, url: posts_url(@post)) do |f| %>
             <div class="card-image">
                 <figure class="">
                     <img class="uploaded-image" style="display: none;" src="http://placehold.it/512" />
                 </figure>
+            </div>
+            <div class="new-post-icon">
             </div>
             <div class="card-content">
                 <div class="content">
@@ -29,7 +31,7 @@
                             <div class="control is-expended">
                                 <div class="select is-fullwidth">
                                     <%= f.select :project_id do %>
-                                        <option disabled selected>Project:</option>
+                                        <option disabled selected>Choose Project:</option>
                                         <% @projects.each do |p| -%>
                                             <%= content_tag(:option, p.title, value: p.id) %>
                                           <% end %>

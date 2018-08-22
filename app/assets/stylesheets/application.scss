@@ -51,6 +51,19 @@ html.signed-out {
     max-height: 70px;
 }
 
+.new-post-icon {
+    width: 100%;
+    height: 100%;
+    background-color: #EEDED4;
+    background-image: url('plus-icon.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    box-shadow: 1px $dim_gray solid;
+    z-index: 10;
+    cursor: pointer;
+}
+
 .card {
     height: 100%;
 }
