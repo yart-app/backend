@@ -88,8 +88,13 @@ html.signed-out {
     cursor: pointer;
 }
 
+.user-avatar.image {
+    max-height: 400px;
+    overflow: hidden;
+}
+
 @include from($tablet) {
-    figure.image {
+    .post-image.image {
         max-height: 400px;
         overflow: hidden;
     }
