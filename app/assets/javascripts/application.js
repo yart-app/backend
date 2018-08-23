@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function () {
     $(".new-post-icon").fadeOut();
   });
 
-  $("#new-post-card").mouseout(function () {
+  $("#new-post-card").mouseleave(function () {
     $(".new-post-icon").fadeIn();
   });
 
