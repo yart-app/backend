@@ -28,6 +28,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :posts
   has_many :tools
+  has_many :comments
 
   validates :title,
             presence: true,

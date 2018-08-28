@@ -9,6 +9,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :project, optional: true
+  has_many :comments
 
   # Custom validators
   def content_presence
