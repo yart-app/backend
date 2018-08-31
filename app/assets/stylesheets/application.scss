@@ -65,11 +65,39 @@ html.signed-out {
 }
 
 .card {
+    margin-top: 5rem;
+}
+
+.card .header {
+    padding: 10px;
+}
+
+.card-footer .columns {
+    width: 100%;
+}
+
+.card-footer .columns input {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.card-footer .columns .column:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.card-footer .columns .column:last-child button {
+    border: none;
+}
+
+.profile-card {
     height: 100%;
 }
 
-.card-image {
-    overflow: hidden;
+.footer {
+    margin-top: 10vh;
+    padding: 2rem 1.5rem;
 }
 
 .modal.is-active .modal-background {
