@@ -9,7 +9,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :project, optional: true
-  has_many :comments
+
+  include Commentable
 
   # Custom validators
   def content_presence
@@ -18,5 +19,9 @@ class Post < ApplicationRecord
 
   def content?
     !text.blank? || image.attached?
+  end
+
+  def ordered_comments
+    comments.order(created_at: "desc")
   end
 end
