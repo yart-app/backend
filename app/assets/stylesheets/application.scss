@@ -82,15 +82,6 @@ html.signed-out {
     box-shadow: none;
 }
 
-.card-footer .columns .column:last-child {
-    display: flex;
-    align-items: center;
-}
-
-.card-footer .columns .column:last-child button {
-    border: none;
-}
-
 .profile-card {
     height: 100%;
 }
@@ -132,6 +123,15 @@ html.signed-out {
 .user-avatar.image {
     max-height: 400px;
     overflow: hidden;
+}
+
+.comment_section {
+    padding:8px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.hidden {
+    display: none;
 }
 
 @include from($tablet) {
