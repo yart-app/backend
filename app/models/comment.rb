@@ -9,6 +9,13 @@ class Comment < ApplicationRecord
 
   validate :belongs_to_post_or_project
 
+  def self.add(data, user)
+    comment = Comment.new(data)
+    comment.user = user
+    comment.save
+    comment
+  end
+
   def belongs_to_post_or_project
     if project_id.nil? && post_id.nil?
       errors.add(:base, "comment should belongs either to a post or a project")
