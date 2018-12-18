@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function () {
         var comment_open_div = '<div class="comment-section">';
         var comment_close_div = '</div>';
 
-        response.comments.forEach(comment => {
+        response.comments.forEach(function(comment) {
           comments_container.append(
             comment_open_div +
             "<strong>" +
