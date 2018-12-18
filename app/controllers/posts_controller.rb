@@ -15,6 +15,8 @@ class PostsController < ApplicationController
     redirect_to root_url
   end
 
+  def show; end
+
   def post_params
     params.require(:post).permit(:text, :project_id)
   end

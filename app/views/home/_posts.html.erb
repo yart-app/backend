@@ -47,14 +47,39 @@
 
 
         </div>
-        <div class="card-footer">
-            <div class="columns">
-                <div class="column">
+
+        <% comments = post.limited_comments(page: 1) %>
+
+        <div id="comments_container_<%= post.id %>">
+            <% comments[:chunk].each do |comment| %>
+                <div class="comment-section">
+                    <strong><%= comment.user.name %>: </strong><%= comment.text %>
+                </div>
+            <% end %>
+        </div>
+        <input
+            type="text"
+            class="hidden"
+            autocomplete="off"
+            id="page_<%= post.id %>"
+            value="1"
+        >
+        <div class="has-text-centered <%= "hidden" if comments[:next] == 0 %>">
+            <button
+                id="<%= post.id %>"
+                class="button more-comments"
+            >
+                <i class="material-icons">more_horiz</i>
+            </button>
+        </div>
+        <div>
+            <div class="">
+                <div class="">
                     <div class="field">
                         <div class="control">
                             <input
                                 id="<%= post.id %>"
-                                class="input is-medium comment"
+                                class="input add-comment"
                                 type="text"
                                 placeholder="Add a comment . . ."
                             >
@@ -63,30 +88,6 @@
                 </div>
             </div>
         </div>
-
-        <% comments = post.limited_comments(page: 1) %>
-
-        <div id="comments_container_<%= post.id %>">
-            <% comments[:chunk].each do |comment| %>
-                <div class="comment_section">
-                    <%= comment.text %>
-                </div>
-            <% end %>
-        </div>
-
-        <input
-            type="text"
-            class="hidden"
-            autocomplete="off"
-            id="page_<%= post.id %>"
-            value="1"
-        >
-
-        <input
-            type="button" value="More.."
-            id="<%= post.id %>"
-            class="more-comments <%= "hidden" if comments[:next] == 0 %>"
-        >
 
     </div>
 <% end %>

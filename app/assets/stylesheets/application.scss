@@ -125,9 +125,20 @@ html.signed-out {
     overflow: hidden;
 }
 
-.comment_section {
+.comment-section {
     padding:8px;
     border-bottom: 1px solid #dbdbdb;
+}
+
+button.more-comments {
+    border-width: 0px;
+}
+
+.add-comment {
+    border: 0px;
+    box-shadow: none;
+    background: #f2f2f2;
+    border-radius: 0;
 }
 
 .hidden {

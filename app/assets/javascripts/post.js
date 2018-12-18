@@ -11,10 +11,16 @@ $(document).on('turbolinks:load', function () {
 
     $.post("/comments", data, function (response, status) {
       if (status !== 422) {
-        var comment_open_div = '<div class="comment_section">';
+        var comment_open_div = '<div class="comment-section">';
         var comment_close_div = '</div>';
 
-        comments_container.prepend(comment_open_div + response.comment.text + comment_close_div);
+        comments_container.prepend(
+          comment_open_div +
+          "<strong>" +
+          response.comment.username +
+          ": </strong>" +
+          response.comment.text +
+          comment_close_div);
         input.val('');
       }
     });
@@ -39,11 +45,18 @@ $(document).on('turbolinks:load', function () {
 
     $.get("/comments", data, function (response, status) {
       if (status !== 422) {
-        var comment_open_div = '<div class="comment_section">';
+        var comment_open_div = '<div class="comment-section">';
         var comment_close_div = '</div>';
 
         response.comments.forEach(comment => {
-          comments_container.append(comment_open_div + comment.text + comment_close_div);
+          comments_container.append(
+            comment_open_div +
+            "<strong>" +
+            comment.username +
+            ": </strong>" +
+            comment.text +
+            comment_close_div
+          );
         });
 
         if (response.next == 0)
