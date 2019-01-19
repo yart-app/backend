@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
   describe "validation" do
     it "validates the presence of username" do
-      is_expected.to validate_presence_of(:username)
+      expect(User.new).to validate_presence_of(:username)
     end
 
     it "validates the uniquness of username" do

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     text { Faker::OnePiece.quote }
-    auto_generated false
+    auto_generated { [false, true].sample }
     association :project
     association :user
 
