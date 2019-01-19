@@ -52,6 +52,7 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+    # Empty storage folder
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

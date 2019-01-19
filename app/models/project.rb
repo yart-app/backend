@@ -29,6 +29,8 @@ class Project < ApplicationRecord
   has_many :posts
   has_many :tools
 
+  include Commentable
+
   validates :title,
             presence: true,
             length: { maximum: 50 }

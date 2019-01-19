@@ -1,61 +1,57 @@
-<div class="column is-4">
-    <div class="card is-shady" id="new-post-card">
-        <%= form_for(@post, url: posts_url(@post)) do |f| %>
-            <div class="card-image">
-                <figure class="">
-                    <img class="uploaded-image" style="display: none;" src="http://placehold.it/512" />
-                </figure>
-            </div>
-            <div class="new-post-icon">
-            </div>
-            <div class="card-content">
-                <div class="content">
-                    <div class="card-image">
-                        <% if flash[:errors] %>
-                            <div class="notification is-danger">
-                                <ul>
-                                    <% flash[:errors].each do |m| %>
-                                        <li>
-                                            <%= m %>
-                                        </li>
-                                    <% end %>
-                                </ul>
-                            </div>
-                        <% end %>
-                        <div class="field">
-                            <div class="control">
-                                <%= f.text_area :text, class: "textarea", placeholder: "Description" %>
+<div class="card is-shady" id="new-post-card">
+    <%= form_for(@post, url: posts_url(@post)) do |f| %>
+        <div class="card-image">
+            <figure class="">
+                <img class="uploaded-image" style="display: none;" src="http://placehold.it/512" />
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <div class="card-image">
+                    <% if flash[:errors] %>
+                        <div class="notification is-danger">
+                            <ul>
+                                <% flash[:errors].each do |m| %>
+                                    <li>
+                                        <%= m %>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.text_area :text, class: "textarea", placeholder: "Description" %>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control is-expended">
+                            <div class="select is-fullwidth">
+                                <%= f.select :project_id do %>
+                                    <option disabled selected>Choose Project:</option>
+                                    <% @projects.each do |p| -%>
+                                        <%= content_tag(:option, p.title, value: p.id) %>
+                                        <% end %>
+                                <% end %>
                             </div>
                         </div>
-                        <div class="field">
-                            <div class="control is-expended">
-                                <div class="select is-fullwidth">
-                                    <%= f.select :project_id do %>
-                                        <option disabled selected>Choose Project:</option>
-                                        <% @projects.each do |p| -%>
-                                            <%= content_tag(:option, p.title, value: p.id) %>
-                                          <% end %>
-                                    <% end %>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="image-upload">
-                                <label for="file-input">
-                                    <span class="fa fa-camera"></span>
-                                </label>
+                    </div>
+                    <div class="field">
+                        <div class="image-upload">
+                            <label for="file-input">
+                                <span class="fa fa-camera"></span>
+                            </label>
 
-                                <%= f.file_field :image, id: "file-input", onchange: "readURL(this);" %>
-                            </div>
+                            <%= f.file_field :image, id: "file-input", onchange: "readURL(this);" %>
                         </div>
-                        <div class="field">
-                            <div class="control">
-                                <%= f.submit "Create", class: "button is-link" %>
-                            </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.submit "Create", class: "button is-link" %>
                         </div>
                     </div>
                 </div>
             </div>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>

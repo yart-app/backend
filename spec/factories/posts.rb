@@ -3,6 +3,7 @@ FactoryBot.define do
     text { Faker::OnePiece.quote }
     auto_generated false
     association :project
+    association :user
 
     factory :post_with_image do
       after(:build) do |post|

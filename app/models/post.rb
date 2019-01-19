@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :project, optional: true
 
+  include Commentable
+
   # Custom validators
   def content_presence
     errors.add(:base, "a post should have content") unless content?
@@ -17,5 +19,9 @@ class Post < ApplicationRecord
 
   def content?
     !text.blank? || image.attached?
+  end
+
+  def ordered_comments
+    comments.order(created_at: "desc")
   end
 end

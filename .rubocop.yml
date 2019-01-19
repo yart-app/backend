@@ -651,3 +651,6 @@ Rails/TimeZone:
 Rails/Validation:
   Description: 'Use validates :attribute, hash of validations.'
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4
