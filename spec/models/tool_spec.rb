@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe Tool, type: :model do
   it "validates the presence of name" do
-    is_expected.to validate_presence_of(:name)
+    expect(Tool.new).to validate_presence_of(:name)
   end
 
   it "validates the length of name" do
-    is_expected.to validate_length_of(:name).is_at_most(20)
+    expect(Tool.new).to validate_length_of(:name).is_at_most(20)
   end
 
   it "validate url format" do

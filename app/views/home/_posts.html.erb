@@ -65,11 +65,8 @@
             value="1"
         >
         <div class="has-text-centered <%= "hidden" if comments[:next] == 0 %>">
-            <button
-                id="<%= post.id %>"
-                class="button more-comments"
-            >
-                <i class="material-icons">more_horiz</i>
+            <button id="<%= post.id %>" class="button more-comments">
+                <i class="material-icons" id="<%= post.id %>">more_horiz</i>
             </button>
         </div>
         <div>

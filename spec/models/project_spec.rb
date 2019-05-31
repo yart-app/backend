@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe Project, type: :model do
   it "validates the presence of title" do
-    is_expected.to validate_presence_of(:title)
+    expect(Project.new).to validate_presence_of(:title)
   end
 
   it "validates the length of title" do
-    is_expected.to validate_length_of(:title).is_at_most(50)
+    expect(Project.new).to validate_length_of(:title).is_at_most(50)
   end
 
   it "validates pattern url format" do

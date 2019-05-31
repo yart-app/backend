@@ -27,6 +27,7 @@ $link: $khaki;
 $light: $beige;
 @import "bulma/bulma";
 @import "bulma-extensions/bulma-timeline/dist/css/bulma-timeline";
+
 html,
 body {
     font-family: 'Open Sans', serif;
@@ -45,6 +46,10 @@ html.signed-in {
 
 html.signed-out {
     background: #fce6e6;
+}
+
+.sub-menu {
+    margin-top: 32px;
 }
 
 .navbar-item img {
