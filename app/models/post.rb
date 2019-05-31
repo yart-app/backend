@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :project, optional: true
 
+  acts_as_votable
+
   include Commentable
 
   # Custom validators
