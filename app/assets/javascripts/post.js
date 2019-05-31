@@ -1,3 +1,4 @@
+"use strict";
 $(document).on('turbolinks:load', function () {
   function postComment(target, input) {
     var data = {
@@ -7,32 +8,24 @@ $(document).on('turbolinks:load', function () {
       }
     };
 
-    var comments_container = $('#comments_container_' + data.comment.post_id);
+    var commentsContainer = $('#comments_container_' + data.comment.post_id);
 
     $.post("/comments", data, function (response, status) {
       if (status !== 422) {
-        var comment_open_div = '<div class="comment-section">';
-        var comment_close_div = '</div>';
+        var commentOpenDiv = '<div class="comment-section">';
+        var commentCloseDiv = '</div>';
 
-        comments_container.prepend(
-          comment_open_div +
+        commentsContainer.prepend(
+          commentOpenDiv +
           "<strong>" +
           response.comment.username +
           ": </strong>" +
           response.comment.text +
-          comment_close_div);
+          commentCloseDiv);
         input.val('');
       }
     });
   }
-
-  $('.add-comment').keypress(function (e) {
-    var input = $(this);
-
-    if (e.keyCode == 13) {
-      postComment(e.target, input);
-    }
-  });
 
   function getComments(target, page) {
 
@@ -41,25 +34,25 @@ $(document).on('turbolinks:load', function () {
       'post_id': target.id,
     };
 
-    var comments_container = $('#comments_container_' + data.post_id);
+    var commentsContainer = $('#comments_container_' + data.post_id);
 
-    $.get("/comments", data, function (response, status) {
+    $.get('/comments', data, function (response, status) {
       if (status !== 422) {
-        var comment_open_div = '<div class="comment-section">';
-        var comment_close_div = '</div>';
+        var commentOpenDiv = '<div class="comment-section">';
+        var commentCloseDiv = '</div>';
 
         response.comments.forEach(function(comment) {
-          comments_container.append(
-            comment_open_div +
+          commentsContainer.append(
+            commentOpenDiv +
             "<strong>" +
             comment.username +
             ": </strong>" +
             comment.text +
-            comment_close_div
+            commentCloseDiv
           );
         });
 
-        if (response.next == 0)
+        if (response.next === 0)
         {
           console.log('response.next: ', response.next);
           $(target).addClass('hidden');
@@ -80,4 +73,13 @@ $(document).on('turbolinks:load', function () {
   $('.more-comments').click(function (e) {
     getComments(e.target, getNextPage(e.target));
   });
+
+  $('.add-comment').keypress(function (e) {
+    var input = $(this);
+
+    if (e.keyCode == 13) {
+      postComment(e.target, input);
+    }
+  });
+
 });
