@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function () {
     });
   }
 
-  $('.comment').keypress(function (e) {
+  $('.add-comment').keypress(function (e) {
     var input = $(this);
 
     if (e.keyCode == 13) {
