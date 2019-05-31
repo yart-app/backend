@@ -74,4 +74,5 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "rubocop", "~> 0.58.1"
 
 # Added at 2018-07-17 07:53:11 +0300 by ehsan:
+gem "acts_as_votable", "~> 0.12.0"
 gem "rubocop-rspec", "~> 1.27"
