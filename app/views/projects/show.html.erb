@@ -19,7 +19,7 @@
       </div>
       <div class="timeline-content">
         <p class="heading"><%= @project.created_at.strftime("%Y-%m-%d") %></p>
-        <p class="has-text-grey">The project just got created</p>
+        <p class="has-text-grey"><%= @project.user.username %> started a new project</p>
         <% unless @project.tools.empty? %>
           <p>Tools: <%= @project.tools[0].name %></p>
         <% end %>
