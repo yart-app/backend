@@ -80,4 +80,13 @@ class User < ApplicationRecord
   def followed_by?(user)
     followers.exists?(user.id)
   end
+
+  def toggle_like(post)
+    if voted_up_on?(post)
+      dislikes(post)
+      return false
+    end
+
+    likes(post)
+  end
 end
