@@ -25,6 +25,12 @@ class User < ApplicationRecord
     projects.order(created_at: "desc")
   end
 
+  def undone_projects(initial_projects = nil)
+    initial_projects ||= projects
+
+    initial_projects.undone
+  end
+
   def ordered_posts(include_auto_generated: true)
     result = posts.order(created_at: "desc")
     return result if include_auto_generated
