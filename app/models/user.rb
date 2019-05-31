@@ -21,8 +21,10 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: Regexp.new(/\A[a-z0-9_]{3,20}\z/) }
 
-  def ordered_projects
-    projects.order(created_at: "desc")
+  def ordered_projects(initial_projects = nil, order_by = "desc")
+    initial_projects ||= projects
+
+    initial_projects.order(created_at: order_by)
   end
 
   def undone_projects(initial_projects = nil)
