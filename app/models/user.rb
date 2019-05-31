@@ -36,22 +36,29 @@ class User < ApplicationRecord
   def ordered_posts(include_auto_generated: true)
     result = posts.order(created_at: "desc")
     return result if include_auto_generated
+
     result.where(auto_generated: false)
   end
 
   def ordered_posts_with_friends_posts
     ids = [id] + followees.ids
-    Post.where(user_id: ids, auto_generated: false).order(created_at: "desc")
+
+    Post.where(
+      user_id: ids,
+      auto_generated: false,
+    ).order(created_at: "desc")
   end
 
   def follow(target_user)
     return false if follow?(target_user)
+
     follow = Follow.create(follower: self, followee: target_user)
     follow.persisted?
   end
 
   def unfollow(target_user)
     return false unless follow?(target_user)
+
     follow = Follow.find_by(follower: self, followee: target_user).destroy
     follow.destroyed?
   end
