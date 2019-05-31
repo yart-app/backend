@@ -46,6 +46,8 @@ class Project < ApplicationRecord
             inclusion: { in: Category::OPTIONS },
             allow_blank: true
 
+  scope :undone, -> { where.not(status: Status::DONE) }
+
   def update_status(new_status)
     if new_status != status
       if update(status: new_status)
@@ -60,6 +62,7 @@ class Project < ApplicationRecord
       if update(category: new_category)
         return generate_post("category", new_category)
       end
+
       false
     end
   end
