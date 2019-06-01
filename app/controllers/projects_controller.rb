@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     @project.save
 
     if @project.errors.empty?
-      redirect_to projects_url
+      redirect_to root_url
     else
       flash[:errors] = @project.errors.full_messages
       redirect_to new_project_url
