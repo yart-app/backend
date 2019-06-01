@@ -31,16 +31,18 @@
                     <hr />
                 <% end %>
                 <p>
-                    <strong>32 Likes</strong>
+                    <strong class="likes-size" id="likes-size-<%= post.id %>">
+                        <%= post.get_ups.size %> Likes
+                    </strong>
                 </p>
                 <time datetime="2018-1-1"><%= post.created_at %></time>
             </div>
             <div class="level is-mobile">
                 <div class="level-left">
                     <div class="level-item has-text-centered">
-                        <a href="">
-                            <i class="material-icons">favorite_border</i>
-                        </a>
+                        <i class="material-icons like" id="<%= post.id %>">
+                            <%= favorite_icon(post) %>
+                        </i>
                     </div>
                 </div>
             </div>

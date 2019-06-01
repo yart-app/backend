@@ -21,6 +21,8 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: Regexp.new(/\A[a-z0-9_]{3,20}\z/) }
 
+  acts_as_voter
+
   def set_as_onboarded
     update(onboarded: true)
   end
@@ -81,5 +83,14 @@ class User < ApplicationRecord
 
   def followed_by?(user)
     followers.exists?(user.id)
+  end
+
+  def toggle_like(post)
+    if voted_up_on?(post)
+      dislikes(post)
+      return false
+    end
+
+    likes(post)
   end
 end
