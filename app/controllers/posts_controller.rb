@@ -12,12 +12,20 @@ class PostsController < ApplicationController
       flash[:errors] = @post.errors.full_messages
     end
 
-    redirect_to root_url
+    redirect_to after_create_path
   end
 
   def show; end
 
   def post_params
     params.require(:post).permit(:text, :project_id)
+  end
+
+  def after_create_path
+    if !current_user.onboarded && @post.project
+      return project_url(@post.project)
+    end
+
+    root_url
   end
 end
