@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, except: %i[index new create]
+  after_action :finish_user_onboarding, only: %i[show]
 
   def index
     @project = Project.new
@@ -61,5 +62,12 @@ class ProjectsController < ApplicationController
                                     :category,
                                     :status,
                                     tool_ids: [])
+  end
+
+  def finish_user_onboarding
+    user = current_user
+    return if user.onboarded
+
+    user.set_as_onboarded
   end
 end
