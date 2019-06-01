@@ -42,7 +42,7 @@
                                 <span class="fa fa-camera"></span>
                             </label>
 
-                            <%= f.file_field :image, id: "file-input", onchange: "readURL(this);" %>
+                            <%= f.file_field :image, id: "file-input", onchange: "readImageURL(this);", accept: "image/*" %>
                         </div>
                     </div>
                     <div class="field">

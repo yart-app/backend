@@ -45,15 +45,17 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-function readURL(input) {
+function readImageURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
       $('.uploaded-image').attr('src', e.target.result);
-      $('.uploaded-image').removeAttr("style")
+      $('.uploaded-image').removeAttr("style");
     };
 
     reader.readAsDataURL(input.files[0]);
+    startIntoJsOnSubmitBtn();
+  }
   }
 }
