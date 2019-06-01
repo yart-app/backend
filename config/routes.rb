@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post "projects/update_status", to: "projects#update_status"
   post "projects/update_category", to: "projects#update_category"
 
+  post "posts/likes", to: "posts#like"
+
   get "profile/:id", to: "users#show", as: "profile"
 
   scope :users do
