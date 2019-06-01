@@ -28,5 +28,10 @@
             <%= yield %>
         </div>
     </section>
+
+    <% if user_signed_in? %>
+        <%= content_tag :input, type: "hidden", class: "onboarded", value: current_user.onboarded do %>
+        <% end %>
+    <% end %>
 </body>
 </html>
