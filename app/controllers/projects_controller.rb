@@ -3,14 +3,12 @@ class ProjectsController < ApplicationController
   before_action :set_project, except: %i[index new create]
 
   def index
-    @projects = current_user.ordered_projects.to_a
-  end
-
-  def new
     @project = Project.new
     @categories = Project::Category::OPTIONS
     @statuses = Project::Status::OPTIONS
     @tools = current_user.tools
+
+    @projects = current_user.ordered_projects.to_a
   end
 
   def create
