@@ -21,6 +21,10 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: Regexp.new(/\A[a-z0-9_]{3,20}\z/) }
 
+  def set_as_onboarded
+    update(onboarded: true)
+  end
+
   def ordered_projects(initial_projects = nil, order_by = "desc")
     initial_projects ||= projects
 
