@@ -17,7 +17,9 @@
         <div class="content">
           <p>
             <%= project.created_at.strftime("%Y-%m-%d") %> &nbsp;
+            <% if project.category %>
             <span class="tag"><%= project.category %></span>
+            <% end %>
             <span class="tag <%= status_class(project.status) %>">
               <%= project.status %>
             </span>
