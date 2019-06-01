@@ -17,11 +17,13 @@ class Project < ApplicationRecord
     CROCHET = "Crochet".freeze
     KNITTING = "Knitting".freeze
     WEAVING = "Weaving".freeze
+    EMBROIDERY = "Embroidery".freeze
 
     OPTIONS = [
       Category::CROCHET,
       Category::KNITTING,
       Category::WEAVING,
+      Category::EMBROIDERY,
     ].freeze
   end
 
