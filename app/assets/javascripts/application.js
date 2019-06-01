@@ -14,6 +14,8 @@
 //= require turbolinks
 //= require intro.js/minified/intro.min.js
 //= require_tree .
+
+"use strict";
 $(document).on('turbolinks:load', function () {
   $(".collapsible").click(function () {
     var content = this.nextElementSibling;
@@ -55,7 +57,23 @@ function readImageURL(input) {
     };
 
     reader.readAsDataURL(input.files[0]);
-    startIntoJsOnSubmitBtn();
+    runIntoJsOnSubmitBtn();
   }
+}
+
+function runIntoJsOnSubmitBtn() {
+  const onboarded = $('.onboarded').val();
+
+  if (onboarded == "false") {
+    // Use setTimeOut here to wait for dom to update before
+    // starting introJs and focus on submit button
+
+    setTimeout(() => {
+      introJs().setOptions({
+        'scrollTo': $('.submit'),
+      });
+
+      introJs().goToStepNumber(5).start();
+    }, 50);
   }
 }
