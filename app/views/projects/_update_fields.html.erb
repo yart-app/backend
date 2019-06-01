@@ -9,19 +9,19 @@
       </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" data-step="2" data-intro="You can change the project's status/category at anytime">
     <div class="control is-expended">
       <div class="select">
-          <%= select_tag :status, options_for_select(@statuses, @project.status), 
-          { 
-            include_blank: "Status:", 
+          <%= select_tag :status, options_for_select(@statuses, @project.status),
+          {
+            include_blank: "Status:",
             onchange: "update_status(#{@project.id}, this.value)",
           } %>
       </div>
       <div class="select">
-          <%= select_tag :category, options_for_select(@categories, @project.category), 
-          { 
-            include_blank: "Category:", 
+          <%= select_tag :category, options_for_select(@categories, @project.category),
+          {
+            include_blank: "Category:",
             onchange: "update_category(#{@project.id}, this.value)",
           } %>
       </div>
