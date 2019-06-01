@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require intro.js/minified/intro.min.js
 //= require_tree .
 $(document).on('turbolinks:load', function () {
   $(".collapsible").click(function () {
