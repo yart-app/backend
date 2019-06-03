@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_user, only: [:show, :toggle_follow]
 
   def show
     @posts = @user.posts
@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     end
 
     render json: { success: true }, status: :ok
+  end
+
+  def finish_onboarding
+    user = current_user
+    return if user.onboarded
+
+    user.set_as_onboarded
   end
 
   private

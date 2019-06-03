@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "sessions" }
 
   resources :tools
-  resources :projects
+  resources :projects, only: [:new, :create, :show]
   resources :posts
   resources :comments
 
@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     post "follow", to: "users#follow", as: "follow"
     post "unfollow", to: "users#unfollow", as: "unfollow"
     post "toggle_follow", to: "users#toggle_follow", as: "toggle_follow"
+
+    scope :onboarding do
+      post :finish, to: "users#finish_onboarding"
+    end
   end
 end
