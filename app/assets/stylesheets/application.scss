@@ -18,14 +18,7 @@
 @import "intro.js/introjs";
 @import "bulma/sass/utilities/initial-variables";
 @import "bulma/sass/utilities/functions";
-$plum: #DF5977;
-$pale_goldenrod:#EBDDB5;
-$khaki: #BAA072;
-$beige: #EEDED4;
-$dim_gray: #826C55;
-$primary: $plum;
-$link: $khaki;
-$light: $beige;
+@import "variables";
 @import "bulma/bulma";
 @import "bulma-extensions/bulma-timeline/dist/css/bulma-timeline";
 
