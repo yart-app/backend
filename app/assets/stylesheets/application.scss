@@ -84,11 +84,14 @@ html.signed-out {
 }
 
 .card {
-    margin-top: 5rem;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .card .header {
-    padding: 10px;
+    padding: 16px 24px;
+    border-bottom: solid #00000014 1px;
 }
 
 .card-footer .columns {
