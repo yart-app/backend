@@ -29,6 +29,14 @@ body {
     font-weight: 300;
 }
 
+body section {
+    padding-top: 104px;
+}
+
+.signed-out body section {
+    padding-top: 80px;
+}
+
 html.signed-in {
     background-color: #FAACA8;
     background-image: linear-gradient(0deg, #FAACA8 10%, #DDD6F3 100%);
