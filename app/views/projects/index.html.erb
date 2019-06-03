@@ -1,36 +1,3 @@
-<div class="level is-mobile sub-menu">
-  <div class="level-left"><h1 class="title has-text-light is-2">Projects</h1></div>
-</div>
-
 <div>
   <%= render "new" %>
 </div>
-
-<div class="box content">
-  <% @projects.each do |project| %>
-    <article class="post">
-    <h4>
-    <%= link_to project.title, project_url(project) %>
-    </h4>
-    <div class="media">
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <%= project.created_at.strftime("%Y-%m-%d") %> &nbsp;
-            <% if project.category %>
-            <span class="tag"><%= project.category %></span>
-            <% end %>
-            <span class="tag <%= status_class(project.status) %>">
-              <%= project.status %>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="media-right">
-        <span class="has-text-grey-light">
-          <i class="fa fa-file"></i> <%= project.posts.count %>
-        </span>
-      </div>
-    </div>
-    </article>
-<% end %>
