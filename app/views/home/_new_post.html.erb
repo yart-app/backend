@@ -20,16 +20,14 @@
                         </div>
                     <% end %>
                     <div class="field">
-                        <div class="control" data-step="3" data-intro="Tell us something about what you're working on" >
-                            <%= f.text_area :text, class: "textarea", placeholder: "" %>
+                        <div class="control">
+                            <%= f.text_area :text, class: "textarea", placeholder: "What are you working on?" %>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control is-expended">
                             <div
                                 class="select is-fullwidth"
-                                data-step="2"
-                                data-intro="Select your project"
                             >
                                 <%= f.select :project_id do %>
                                     <option disabled selected>Choose a project:</option>
@@ -40,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="field" data-step="4" data-intro="Upload your first image">
+                    <div class="field">
                         <div class="image-upload">
                             <label for="file-input">
                                 <span class="fa fa-camera"></span>
@@ -49,7 +47,7 @@
                             <%= f.file_field :image, id: "file-input", onchange: "readImageURL(this);", accept: "image/*" %>
                         </div>
                     </div>
-                    <div class="field" data-step="5" data-intro="Submit your post!">
+                    <div class="field">
                         <div class="control submit">
                             <%= f.submit "Create", class: "button is-link" %>
                         </div>
