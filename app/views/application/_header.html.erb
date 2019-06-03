@@ -1,7 +1,8 @@
 <nav class="navbar is-fixed-top">
     <div class="container">
+        <div class="navbar-start">
         <div class="navbar-brand">
-            <a class="navbar-item" href="../">
+            <a class="navbar-item level-item" href="../">
                 <%= image_tag "logo.png", alt: "Yart Logo" %>
             </a>
             <span class="navbar-burger burger" data-target="navbarMenu">
@@ -10,26 +11,22 @@
                 <span></span>
             </span>
         </div>
+        </div>
         <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-                <%= link_to "Projects", projects_url, class: "navbar-item" %>
-                <%= link_to "Tools", tools_url, class: "navbar-item" %>
-                <a class="navbar-item">
-                    Friends
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Account
-                    </a>
-                    <div class="navbar-dropdown">
-                        <%= link_to "Profile", profile_url(current_user.id), class: "navbar-item" %>
-                        <hr class="navbar-divider">
-                        <%= link_to "Settings", edit_user_registration_url, class: "navbar-item" %>
-                        <hr class="navbar-divider">
-                        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
-                    </div>
-                </div>
-            </div>
+        <div class="navbar-end">
+            <p class="level-item">
+            <%= link_to "New project", new_project_url, class: "button is-link"  %>
+            <p>
+            <p class="level-item">
+                <%= link_to "Home", root_url, class: "navbar-item"  %>
+            </p>
+            <p class="level-item">
+                <%= link_to "Profile", profile_url(current_user.id), class: "navbar-item"  %>
+            </p>
+            <p class="level-item">
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
+            </p>
+        </div>
         </div>
     </div>
 </nav>
