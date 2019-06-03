@@ -70,17 +70,6 @@ html.signed-out {
     max-height: 70px;
 }
 
-.new-post-icon {
-    width: 100%;
-    height: 100%;
-    background-color: #EEDED4;
-    background-image: url('plus-icon.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    box-shadow: 1px $dim_gray solid;
-    z-index: 10;
-    cursor: pointer;
 }
 
 .card {
@@ -144,29 +133,6 @@ html.signed-out {
     overflow: hidden;
 }
 
-.comment-section {
-    padding:8px;
-    border-bottom: 1px solid #dbdbdb;
-}
-
-button.more-comments {
-    border-width: 0px;
-}
-
-.add-comment {
-    border: 0px;
-    box-shadow: none;
-    background: #f2f2f2;
-    border-radius: 0;
-}
-
 .hidden {
     display: none;
-}
-
-@include from($tablet) {
-    .post-image.image {
-        max-height: 400px;
-        overflow: hidden;
-    }
 }
