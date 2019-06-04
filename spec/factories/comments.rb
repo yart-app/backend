@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
     association :user
-    text { Faker::HarryPotter.quote }
+    text { Faker::Movies::HarryPotter.quote }
 
     factory :comment_on_post do
       association :post
