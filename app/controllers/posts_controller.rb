@@ -23,10 +23,10 @@ class PostsController < ApplicationController
     @result = current_user.toggle_like(@post)
 
     @message = if @result
-                "liked"
-              else
-                "disliked"
-              end
+                 "liked"
+               else
+                 "disliked"
+               end
 
     render template: "posts/like.json.jbuilder", status: :ok
   end
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
     root_url
   end
-   
+
   def after_create_path
     if !current_user.onboarded && @post.project
       return project_url(@post.project)

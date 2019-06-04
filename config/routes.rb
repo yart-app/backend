@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :tools
-  resources :projects, only: [:new, :create, :show]
+  resources :projects, only: %i[new create show]
   resources :posts
   resources :comments
 
