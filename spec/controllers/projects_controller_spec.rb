@@ -8,21 +8,6 @@ RSpec.describe ProjectsController, type: :request do
     FactoryBot.create_list(:project, 3, user: user)
   end
 
-  describe "#index" do
-    before do
-      get "/projects"
-    end
-
-    it "renders projects index view" do
-      expect(response).to render_template(:index)
-    end
-
-    it "gets all user's projects" do
-      user_projects = user.projects.order(created_at: "desc").to_a
-      expect(assigns(:projects)).to eql user_projects
-    end
-  end
-
   describe "#new" do
     before do
       get "/projects/new"
