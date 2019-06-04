@@ -13,7 +13,7 @@ RSpec.describe ProjectsController, type: :request do
       get "/projects/new"
     end
 
-    it "renders projects index view" do
+    it "renders projects new view" do
       expect(response).to render_template(:new)
     end
 
