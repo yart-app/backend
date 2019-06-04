@@ -42,9 +42,10 @@ RSpec.describe ProjectsController, type: :request do
       )
     end
 
-    it "redirects to the root url" do
-      post "/projects", params: { project: FactoryBot.attributes_for(:project) }
-      expect(response).to redirect_to projects_url
+    it "redirects to the project's url" do
+      project = FactoryBot.attributes_for(:project)
+      post "/projects", params: { project: project }
+      expect(response).to redirect_to project_url(id: Project.last.id)
     end
   end
 
