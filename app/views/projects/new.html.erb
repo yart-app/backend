@@ -1,4 +1,4 @@
-<div class="box content">
+<div class="box card">
   <% if flash[:errors] %>
       <div class="notification is-danger">
           <ul>
@@ -26,18 +26,6 @@
               <option disabled selected>Category:</option>
               <% @categories.each do |c| -%>
                 <%= content_tag(:option, c, value: c) %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="field">
-        <div class="control is-expended">
-          <div class="select is-fullwidth">
-            <%= f.select :status do %>
-              <option disabled selected>Status:</option>
-              <% @statuses.each do |s| -%>
-                <%= content_tag(:option, s, value: s) %>
               <% end %>
             <% end %>
           </div>

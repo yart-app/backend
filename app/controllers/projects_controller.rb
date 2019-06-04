@@ -3,13 +3,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, except: %i[index new create]
   after_action :finish_user_onboarding, only: %i[show]
 
-  def index
+  def new
     @project = Project.new
     @categories = Project::Category::OPTIONS
     @statuses = Project::Status::OPTIONS
     @tools = current_user.tools
-
-    @projects = current_user.ordered_projects.to_a
   end
 
   def create
@@ -18,7 +16,7 @@ class ProjectsController < ApplicationController
     @project.save
 
     if @project.errors.empty?
-      redirect_to root_url
+      redirect_to project_url(@project.id)
     else
       flash[:errors] = @project.errors.full_messages
       redirect_to new_project_url
