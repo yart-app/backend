@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
     ordered_projects = current_user.ordered_projects
 
-    @projects = current_user.undone_projects(ordered_projects).to_a
+    @projects = ordered_projects.to_a
     @posts = current_user.ordered_posts_with_friends_posts.to_a
   end
 end
