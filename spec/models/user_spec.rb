@@ -107,7 +107,8 @@ RSpec.describe User, type: :model do
     context "when not sending initiale projects as a param" do
       it "returns all user's projects" do
         limit = 2
-        initiale_projects = projects.limit(limit)
+        initiale_projects = Project.limit(limit)
+
         expect(
           current_user.ordered_projects(initiale_projects).size,
         ).to eq(limit)
