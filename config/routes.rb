@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "home#index"
-  devise_for :users, controllers: { sessions: "sessions" }
+  devise_for :users
 
   resources :tools
   resources :projects, only: [:new, :create, :show]
