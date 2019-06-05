@@ -26,4 +26,10 @@ class Post < ApplicationRecord
   def ordered_comments
     comments.order(created_at: "desc")
   end
+
+  def set_project(project_identifier:)
+    self.project =
+      Project.find_by(id: project_identifier) ||
+      Project.create(user: user, title: project_identifier)
+  end
 end
