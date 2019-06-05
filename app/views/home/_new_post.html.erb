@@ -29,8 +29,8 @@
                             <div
                                 class="select is-fullwidth"
                             >
-                                <%= f.select :project_id do %>
-                                    <option disabled selected>Choose a project:</option>
+                                <%= f.select :project, nil, {}, { class: "select2-with-create-option" } do %>
+                                    <option disabled selected>choose/create a project</option>
                                     <% @projects.each do |p| -%>
                                         <%= content_tag(:option, p.title, value: p.id) %>
                                         <% end %>
