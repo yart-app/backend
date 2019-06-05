@@ -4,6 +4,7 @@
   "dependencies": {
     "bulma": "^0.7.1",
     "bulma-extensions": "^2.2.1",
-    "intro.js": "^2.9.3"
+    "intro.js": "^2.9.3",
+    "select2": "^4.0.7"
   }
 }

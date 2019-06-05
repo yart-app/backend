@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require intro.js/minified/intro.min.js
+//= require select2/dist/js/select2.min
 //= require_tree .
 
 "use strict";
