@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       flash[:errors] = @post.errors.full_messages
     end
 
-    redirect_to after_create_path
+    redirect_to root_url
   end
 
   def show; end
@@ -42,14 +42,6 @@ class PostsController < ApplicationController
     if @post.nil?
       flash[:errors] = ["Post was not found"]
       redirect_back fallback_location: root_path
-    end
-
-    root_url
-  end
-
-  def after_create_path
-    if !current_user.onboarded && @post.project
-      return project_url(@post.project)
     end
 
     root_url
