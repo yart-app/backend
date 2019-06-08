@@ -3,11 +3,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[like]
 
   def create
-    @post = Post.new(post_params)
-    @post.auto_generated = false
-    @post.image.attach(params["post"]["image"])
-    @post.user = current_user
-    @post.save
+    @post = Post.custom_create(
+      data: params["post"],
+      user: current_user,
+    )
 
     unless @post.errors.empty?
       flash[:errors] = @post.errors.full_messages
@@ -34,7 +33,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :project_id)
+    params.require(:post).permit(:text)
   end
 
   def set_post

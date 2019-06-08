@@ -19,6 +19,17 @@ class Post < ApplicationRecord
     errors.add(:base, "a post should have content") unless content?
   end
 
+  def self.custom_create(user:, data:)
+    post = Post.new(text: data["text"])
+    post.auto_generated = false
+    post.image.attach(data["image"])
+    post.user = user
+
+    post.set_project(project_identifier: data["project"])
+    post.save
+    post
+  end
+
   def content?
     !text.blank? || image.attached?
   end
