@@ -8,7 +8,6 @@
     </header>
   <% end %>
 
-  <% unless post.updated_value == Project::Status::DONE %>
   <div class="timeline-item">
     <div class="timeline-marker is-icon">
       <i class="fa <%= icon_class(post.auto_generated) %>"></i>
@@ -27,5 +26,4 @@
       <% end %>
     </div>
   </div>
-  <% end %>
 <% end %>
