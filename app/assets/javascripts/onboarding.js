@@ -5,10 +5,10 @@ $(document).on('turbolinks:load', function () {
 });
 
 function startOnboarding() {
-  const onboarded = $('.onboarded').val();
+  var onboarded = $('.onboarded').val();
 
   if (onboarded == 'false') {
-    const intro = introJs();
+    var intro = introJs();
 
     intro.setOptions({
       steps: [{

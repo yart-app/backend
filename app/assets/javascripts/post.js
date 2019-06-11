@@ -89,7 +89,7 @@ $(document).on('turbolinks:load', function () {
 
     $.post('/posts/likes', data, function (response, status) {
       if (status !== 422) {
-        let icon = 'favorite_border';
+        var icon = 'favorite_border';
 
         if (response.message === "liked") {
           icon = 'favorite';
@@ -115,7 +115,7 @@ function readImageURL(input) {
 }
 
 function runIntoJsOnSubmitBtn() {
-  const onboarded = $('.onboarded').val();
+  var onboarded = $('.onboarded').val();
 
   if (onboarded == "false") {
     // Use setTimeOut here to wait for dom to update before
