@@ -121,7 +121,7 @@ function runIntoJsOnSubmitBtn() {
     // Use setTimeOut here to wait for dom to update before
     // starting introJs and focus on submit button
 
-    setTimeout(() => {
+    setTimeout(function() {
       introJs().setOptions({
         'scrollTo': $('.submit'),
       });
