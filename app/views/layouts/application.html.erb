@@ -39,10 +39,12 @@
             <i class="fa fa-home"></i>
             <p class="is-size-7">Home</p>
         </a>
+        <% if current_user %>
         <a class="navbar-item is-expanded is-inline-block has-text-centered" href="/profile/<%= current_user.id %>">
             <i class="fa fa-user"></i>
             <p class="is-size-7">Profile</p>
         </a>
+        <% end %>
     </nav>
 </body>
 </html>
