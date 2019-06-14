@@ -20,9 +20,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
     <body>
-    <% if user_signed_in? %>
-        <%= render "header" %>
-    <% end %>
+    <%= render "header" %>
+
     <section>
         <div class="container wrapper">
             <%= yield %>
