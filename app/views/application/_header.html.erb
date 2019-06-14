@@ -1,32 +1,17 @@
-<nav class="navbar is-fixed-top">
-    <div class="container">
-        <div class="navbar-start">
-        <div class="navbar-brand">
-            <a class="navbar-item level-item" href="../">
-                <%= image_tag "logo.png", alt: "Yart Logo" %>
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-            <p class="level-item">
-            <%= link_to "New project", new_project_url, class: "button is-link"  %>
-            <p>
-            <p class="level-item">
-                <%= link_to "Home", root_url, class: "navbar-item"  %>
-            </p>
-            <p class="level-item">
-                <%= link_to "Profile", profile_url(current_user.id), class: "navbar-item"  %>
-            </p>
-            <p class="level-item">
-                <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
-            </p>
-        </div>
-        </div>
-    </div>
+<nav class="level navbar is-fixed-top ">
+    <p class="level-item has-text-centered">
+        <%= link_to "Home", root_url, class: "navbar-item is-hidden-mobile"  %>
+    </p>
+    <p class="level-item has-text-centered">
+        <%= link_to "Profile", profile_url(current_user.id), class: "navbar-item is-hidden-mobile"  %>
+    </p>
+    <p class="level-item has-text-centered">
+        <%= image_tag "logo.png", alt: "Yart Logo" %>
+    </p>
+    <p class="level-item has-text-centered">
+        <%= link_to "New project", new_project_url, class: "button is-link is-hidden-mobile"  %>
+    </p>
+    <p class="level-item has-text-centered">
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item is-hidden-mobile") %>
+    </p>
 </nav>
