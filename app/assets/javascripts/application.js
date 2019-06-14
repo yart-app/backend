@@ -18,6 +18,22 @@
 
 "use strict";
 $(document).on('turbolinks:load', function () {
+  var c, currentScrollTop = 0, navbar = $('.is-fixed-top');
+
+  $(window).scroll(function () {
+    var a = $(window).scrollTop();
+    var b = navbar.height();
+
+    currentScrollTop = a;
+
+    if (c < currentScrollTop && a > b + b) {
+      navbar.addClass("hidden");
+    } else if (c > currentScrollTop && !(a <= b)) {
+      navbar.removeClass("hidden");
+    }
+    c = currentScrollTop;
+  });
+
   $('.select2-with-create-option').select2({
     tags: true
   });
