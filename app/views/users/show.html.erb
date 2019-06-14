@@ -37,7 +37,8 @@
   </div>
 </div>
 
-  <div class="box card">
+<% if @user.projects.size > 0 %>
+<div class="box card">
   <% @user.projects.each do |project| %>
     <article class="post">
     <a href="/projects/<%= project.id %>" style="display: block;">
@@ -66,5 +67,6 @@
     </div>
     </a>
     </article>
-<% end %>
+  <% end %>
 </div>
+<% end %>
