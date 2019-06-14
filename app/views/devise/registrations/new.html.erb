@@ -7,7 +7,6 @@
                         <%= image_tag "logo-circle.png" %>
                     </figure>
                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                        <h3 class="title has-text-grey">Sign up</h3>
                         <div class="notification is-danger"><%= alert %><%= devise_error_messages! %></div>
                         <div class="field">
                             <div class="control">
