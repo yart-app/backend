@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user, only: %i[show toggle_follow]
 
   def show
