@@ -10,7 +10,7 @@
                         <div class="notification is-danger"><%= alert %><%= devise_error_messages! %></div>
                         <div class="field">
                             <div class="control">
-                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                                <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
                             </div>
                         </div>
                         <%= f.submit "Send reset password instructions", class:"button is-block is-primary is-large is-fullwidth" %>
