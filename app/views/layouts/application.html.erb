@@ -32,19 +32,21 @@
     <% if user_signed_in? %>
         <%= content_tag :input, type: "hidden", class: "onboarded", value: current_user.onboarded do %>
         <% end %>
-    <% end %>
 
-    <nav class="mobile-navbar is-hidden-tablet">
-        <a class="navbar-item is-expanded is-inline-block  has-text-centered" href="/">
-            <i class="fa fa-home"></i>
-            <p class="is-size-7">Home</p>
-        </a>
-        <% if current_user %>
-        <a class="navbar-item is-expanded is-inline-block has-text-centered" href="/profile/<%= current_user.id %>">
-            <i class="fa fa-user"></i>
-            <p class="is-size-7">Profile</p>
-        </a>
-        <% end %>
-    </nav>
+        <nav class="mobile-navbar is-hidden-tablet">
+            <a class="navbar-item is-expanded is-inline-block has-text-centered" href="/profile/<%= current_user.id %>">
+                <i class="fa fa-user"></i>
+                <p class="is-size-7">Profile</p>
+            </a>
+            <a class="navbar-item is-expanded is-inline-block  has-text-centered" href="/">
+                <i class="fa fa-home"></i>
+                <p class="is-size-7">Home</p>
+            </a>
+            <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item is-expanded is-inline-block has-text-centered" do %>
+                <i class="fa fa-sign-out"></i>
+                <p class="is-size-7">Logout</p>
+            <% end %>
+        </nav>
+    <% end %>
 </body>
 </html>
