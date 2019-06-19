@@ -1,14 +1,21 @@
-<div class="level is-mobile sub-menu">
-  <div class="level-left">
-  <h3 class="title has-text-light is-3">
-      <%= @project.title %>
-  </h3>
+<div class="card post-card">
+  <div class="header">
+    <div class="media">
+      <div class="media-left">
+          <figure class="image is-48x48 user-avatar">
+              <%= user_avatar(@project.user) %>
+          </figure>
+      </div>
+      <div class="media-content">
+          <p class="title is-4"><%= @project.title %></p>
+      </div>
+    </div>
+    <%= render "update_fields" %>
   </div>
 </div>
 
-<%= render "update_fields" %>
-
 <div class="box content">
+  <%= render "tools" %>
   <div class="timeline">
     <header class="timeline-header">
       <span class="tag is-medium is-success"><%= Project::Status::NEW%></span>
