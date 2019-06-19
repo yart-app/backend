@@ -40,7 +40,7 @@ body {
 }
 
 body section {
-    padding-top: 72px;
+    padding: 72px 10px 0px 10px;
 }
 
 .signed-out body section {
@@ -101,6 +101,7 @@ html.signed-out {
 
 .card {
     margin-top: 24px;
+    margin-bottom: 24px;
     border-radius: 8px;
     overflow: hidden;
 }
