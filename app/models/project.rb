@@ -68,7 +68,7 @@ class Project < ApplicationRecord
 
     post = posts.create(
       auto_generated: true,
-      text: "Updated the #{field_name}",
+      text: "Set the #{field_name} to #{updated_value}",
       user: user,
       updated_value: updated_value,
       updated_field: "category",
