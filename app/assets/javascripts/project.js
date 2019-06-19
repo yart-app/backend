@@ -1,19 +1,16 @@
 "use strict";
 
-function update_status(id, status) {
-  var data = {
-    id: id,
-    status: status
-  }
 
-  $.post("update_status", data, function (response, status) {});
 }
 
-function update_category(id, category) {
+function update_by_field(id, key, value) {
   var data = {
     id: id,
-    category: category
+    key: key,
+    value: value
   }
 
-  $.post("update_category", data, function (response, status) {});
+  $.post("update_by_field", data, function (response, status) {
+    updateTimeline(response.post);
+  });
 }

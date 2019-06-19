@@ -28,18 +28,19 @@ class ProjectsController < ApplicationController
     @posts = @project.posts.to_a
   end
 
-  def update_status
-    unless @project.update_status(params[:status])
-      flash[:errors] = @project.errors.full_messages
-      redirect_to project_path(@project)
-    end
-  end
+  def update_by_field
+    result = @project.update_by_field(
+      key: params[:key],
+      value: params[:value],
+    )
 
-  def update_category
-    unless @project.update_category(params[:category])
+    unless result[:status]
       flash[:errors] = @project.errors.full_messages
-      redirect_to project_path(@project)
+      redirect_to project_path(@project) && return
     end
+
+    @post = result[:generated_post]
+    render template: "posts/show.json.jbuilder", status: :ok
   end
 
   private

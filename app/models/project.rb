@@ -50,23 +50,15 @@ class Project < ApplicationRecord
 
   scope :undone, -> { where.not(status: Status::DONE) }
 
-  def update_status(new_status)
-    if new_status != status
-      if update(status: new_status)
-        return generate_post("status", new_status)
-      end
-    end
-    false
-  end
+  def update_by_field(key:, value:)
+    result = { status: false }
+    return result if value == self[key]
 
-  def update_category(new_category)
-    if new_category != category
-      if update(category: new_category)
-        return generate_post("category", new_category)
-      end
-
-      false
+    if update(key => value)
+      result = generate_post(key, value)
     end
+
+    result
   end
 
   private
@@ -82,6 +74,6 @@ class Project < ApplicationRecord
       updated_field: "category",
     )
 
-    !post.new_record?
+    { status: !post.new_record?, generated_post: post }
   end
 end

@@ -15,16 +15,17 @@
           <%= select_tag :status, options_for_select(@statuses, @project.status),
           {
             include_blank: "Status:",
-            onchange: "update_status(#{@project.id}, this.value)",
+            onchange: "update_by_field(#{@project.id}, 'status', this.value)",
           } %>
       </div>
       <div class="select">
           <%= select_tag :category, options_for_select(@categories, @project.category),
           {
             include_blank: "Category:",
-            onchange: "update_category(#{@project.id}, this.value)",
+            onchange: "update_by_field(#{@project.id}, 'category', this.value)",
           } %>
       </div>
+      <button class="button is-link tools-link">Tools</button>
     </div>
   </div>
 <% end %>
