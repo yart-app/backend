@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.custom_create(
-      data: params["post"],
+      data: params,
       user: current_user,
     )
 

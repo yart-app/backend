@@ -1,5 +1,5 @@
 <div class="card is-shady new-post">
-    <%= form_for(@post, url: posts_url(@post)) do |f| %>
+    <%= form_tag(posts_url, multipart: true) do %>
         <div class="card-image">
             <figure class="">
                 <img class="uploaded-image" style="display: none;" src="http://placehold.it/512" />
@@ -11,9 +11,9 @@
                     <% if flash[:errors] %>
                         <div class="notification is-danger">
                             <ul>
-                                <% flash[:errors].each do |m| %>
+                                <% flash[:errors].each do |messsage| %>
                                     <li>
-                                        <%= m %>
+                                        <%= messsage %>
                                     </li>
                                 <% end %>
                             </ul>
@@ -21,7 +21,7 @@
                     <% end %>
                     <div class="field">
                         <div class="control">
-                            <%= f.text_area :text, class: "textarea", placeholder: "What are you working on?" %>
+                            <%= text_area_tag :text, nil, { class: "textarea", placeholder: "What are you working on?" } %>
                         </div>
                     </div>
                     <div class="field">
@@ -29,27 +29,22 @@
                             <div
                                 class="select is-fullwidth"
                             >
-                                <%= f.select :project, nil, {}, { class: "select2-with-create-option" } do %>
-                                    <option disabled selected>choose/create a project</option>
-                                    <% @projects.each do |p| -%>
-                                        <%= content_tag(:option, p.title, value: p.id) %>
-                                        <% end %>
-                                <% end %>
+                                <%= select_tag :project, options_for_select(@projects.collect{ |p| [p.title, p.id] }), { class: "select2-with-create-option" } %>
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <div class="image-upload">
                             <label for="file-input">
-                                <span class="fa fa-camera"></span>
+                                <span class="fa fa-camera" style="margin-top: 8px;"></span>
                             </label>
 
-                            <%= f.file_field :image, id: "file-input", onchange: "readImageURL(this);", accept: "image/*" %>
+                            <%= file_field_tag 'image', id: "file-input", onchange: "readImageURL(this);", accept: "image/*" %>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control submit">
-                            <%= f.submit "Create", class: "button is-primary" %>
+                            <%= submit_tag "Create", class: "button is-primary" %>
                         </div>
                     </div>
                 </div>
