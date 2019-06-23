@@ -1,11 +1,14 @@
 
 $(document).on('turbolinks:load', function () {
-  $('.tools-link').click(function () {
-    console.log('test tools modal');
-    $('.modal').addClass('is-active');
+  $('.edit-tools-link').click(function () {
+    $('.edit-tools-modal').addClass('is-active');
   });
 
-  $('.modal-close').click(function () {
+  $('.tools-link').click(function () {
+    $('.tools-modal').addClass('is-active');
+  });
+
+  $('.modal-background').click(function () {
     $('.modal').removeClass('is-active');
   });
 });

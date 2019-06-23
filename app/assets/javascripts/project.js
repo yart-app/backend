@@ -1,5 +1,15 @@
 "use strict";
 
+$(document).on('turbolinks:load', function () {
+  $('.new-project-button').click(function () {
+    $('.new-project-modal').addClass('is-active');
+  });
+
+  $('.modal-background').click(function () {
+    $('.modal').removeClass('is-active');
+  });
+});
+
 function updateTimeline(post) {
   var timelineContainer = $('.timeline');
 
