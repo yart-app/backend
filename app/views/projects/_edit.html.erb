@@ -1,0 +1,25 @@
+<div class="card-footer-item">
+<div class="select">
+  <%= select_tag :status, options_for_select(@statuses, @project.status),
+      {
+        include_blank: "Status:",
+        class: "no-border",
+        onchange: "update_by_field(#{@project.id}, 'status', this.value)",
+      } %>
+</div>
+</div>
+<div class="card-footer-item">
+<div class="select">
+  <%= select_tag :category, options_for_select(@categories, @project.category),
+      {
+        include_blank: "Category:",
+        class: "no-border",
+        onchange: "update_by_field(#{@project.id}, 'category', this.value)",
+      } %>
+</div>
+</div>
+<div class="card-footer-item">
+  <button class="button edit-tools-link no-border">
+    Tools
+  </button>
+</div>
