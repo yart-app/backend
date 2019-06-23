@@ -21,20 +21,21 @@
           <%= render "toggle_follow", key: "follow" %>
         <% end %>
       <% end %>
-
-      <% if current_user.id == @user.id %>
-        <%= link_to "Followers", root_url, class: "button"  %>
-        <%= link_to "Following", root_url, class: "button"  %>
-      <% end %>
       </div>
     </div>
 
     <div class="content">
       <%= @user.bio %>
-      <br>
-      <time>Since: <%= @user.created_at.strftime("%Y-%m-%d") %></time>
     </div>
   </div>
+  <footer class="card-footer">
+    <div class="card-footer-item">
+    <%= link_to @user.followers_size + " Followers", "", class: "button no-border"  %>
+    </div>
+    <div class="card-footer-item">
+    <%= link_to @user.followees_size + " Following", "", class: "button card-footer-item no-border"  %>
+    </div>
+  </footer>
 </div>
 
 <% if @user.projects.size > 0 %>
