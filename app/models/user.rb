@@ -93,4 +93,12 @@ class User < ApplicationRecord
 
     likes(post)
   end
+
+  def followers_size
+    followers.size.to_s
+  end
+
+  def followees_size
+    followers.size.to_s
+  end
 end
