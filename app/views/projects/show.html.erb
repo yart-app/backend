@@ -8,8 +8,16 @@
     <div class="content">
       <%= @project.posts.where(auto_generated: false).last&.text %>
     </div>
-    <%= render "update_fields" %>
   </div>
+  <footer class="card-footer">
+  <% if @project.user === current_user %>
+    <%= render "edit" %>
+    <%= render "edit_tools" %>
+  <% else %>
+    <%= render "details" %>
+    <%= render "tools" %>
+  <% end %>
+  </footer>
 </div>
 
 <div class="box content">
