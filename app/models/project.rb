@@ -61,6 +61,37 @@ class Project < ApplicationRecord
     result
   end
 
+  def update_tools(data:, user:)
+    hooks = Tool.update_for_project(
+      project_id: data["id"],
+      name: "hooks",
+      key: "description",
+      value: data["project"]["hooks"],
+      user: user,
+    )
+
+    yarns = Tool.update_for_project(
+      project_id: data["id"],
+      name: "yarns",
+      key: "description",
+      value: data["project"]["yarns"],
+      user: user,
+    )
+
+    pattern = Tool.update_for_project(
+      project_id: data["id"],
+      name: "pattern",
+      key: "url",
+      value: data["project"]["pattern"],
+      user: user,
+    )
+
+    {
+      hooks: hooks,
+      yarns: yarns,
+      pattern: pattern
+    }
+  end
   private
 
   def generate_post(field_name, updated_value)

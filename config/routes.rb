@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :comments
 
   post "projects/update_by_field", to: "projects#update_by_field"
+  patch "projects/update_tools", to: "projects#update_tools", as: "update_tools"
 
   post "posts/likes", to: "posts#like"
 
