@@ -92,6 +92,19 @@ class Project < ApplicationRecord
       pattern: pattern
     }
   end
+
+  def hooks
+    tools.find_by(name: "hooks")&.description
+  end
+
+  def yarns
+    tools.find_by(name: "yarns")&.description
+  end
+
+  def pattern
+    tools.find_by(name: "pattern")&.url
+  end
+
   private
 
   def generate_post(field_name, updated_value)
