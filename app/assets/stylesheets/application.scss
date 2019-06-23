@@ -30,6 +30,7 @@ body {
     font-weight: 300;
     max-width: 100%;
     overflow-x: hidden;
+    height: 100%;
 }
 
 @include from($tablet) {
@@ -41,34 +42,20 @@ body {
 
 body section {
     padding: 72px 10px 0px 10px;
+    margin-bottom: 72px;
 }
 
 .signed-out body section {
     padding-top: 80px;
 }
 
-html.signed-in {
+body {
     background-color: #FAACA8;
     background-image: linear-gradient(0deg, #FAACA8 10%, #DDD6F3 100%);
     background-size: cover;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-html.signed-out {
-    background-color: #FAACA8;
-    background-image: url("bg.jpg");
-    background-size: cover;
-    background-attachment: fixed;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100%;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 .tooltip-class {
@@ -134,6 +121,14 @@ html.signed-out {
     opacity: 0.8;
 }
 
+.modal-content {
+    max-height: 100%;
+}
+
+.modal-content .card {
+    padding:16px;
+}
+
 .image-upload>input {
     display: none;
 }
@@ -152,16 +147,45 @@ html.signed-out {
 }
 
 .mobile-navbar {
-    /* just for demo */
     background-color: #F8F8F8;
     border-top: 1px solid #E7E7E7;
     text-align: center;
     font-size: 16px;
-    /* just for demo */
 
     position: fixed;
     left: 0;
     bottom: 0;
     height: 60px;
     width: 100%;
+}
+
+.card-footer-item {
+    padding: 0px !important;
+}
+
+.no-border {
+    width: 100%;
+    border: 0px !important;
+}
+
+.no-border:focus, .no-border:hover {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.new-project-button {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 70px;
+    right: 10px;
+    background-color: $khaki;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.float {
+    margin-top: 22px;
 }
