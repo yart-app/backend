@@ -15,11 +15,6 @@
           </div>
       </div>
       <div class="field">
-          <div class="control is-expanded">
-              <%= f.text_field :pattern_url, class: "input", placeholder: "Pattern url" %>
-          </div>
-      </div>
-      <div class="field">
         <div class="control is-expanded">
           <div class="select is-fullwidth">
             <%= f.select :category do %>
@@ -30,17 +25,6 @@
             <% end %>
           </div>
         </div>
-      </div>
-      <div class="field">
-        <% unless @tools.empty? %>
-            <div class="select is-multiple is-fullwidth">
-              <%= f.select :tool_ids, {}, { include_hidden: false }, { :multiple => true } do %>
-                <% @tools.each do |t| -%>
-                  <%= content_tag(:option, t.name, value: t.id) %>
-                <% end %>
-              <% end %>
-            </div>
-        <% end %>
       </div>
       <div class="field">
           <div class="control">
