@@ -1,14 +1,12 @@
-<div class="card post-card">
-  <div class="header">
-    <div class="media">
-      <div class="media-left">
-          <figure class="image is-48x48 user-avatar">
-              <%= user_avatar(@project.user) %>
-          </figure>
-      </div>
-      <div class="media-content">
-          <p class="title is-4"><%= @project.title %></p>
-      </div>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <%= @project.title %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <%= @project.posts.where(auto_generated: false).last&.text %>
     </div>
     <%= render "update_fields" %>
   </div>
