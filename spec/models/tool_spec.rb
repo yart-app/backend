@@ -16,6 +16,6 @@ RSpec.describe Tool, type: :model do
 
   it "validates that there is at least one image" do
     tool = FactoryBot.build(:tool)
-    expect(tool).not_to be_valid
+    expect(tool).to be_valid
   end
 end
