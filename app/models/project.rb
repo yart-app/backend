@@ -17,11 +17,13 @@ class Project < ApplicationRecord
     CROCHET = "Crochet".freeze
     KNITTING = "Knitting".freeze
     WEAVING = "Weaving".freeze
+    EMBROIDERY = "Embroidery".freeze
 
     OPTIONS = [
       Category::CROCHET,
       Category::KNITTING,
       Category::WEAVING,
+      Category::EMBROIDERY,
     ].freeze
   end
 
@@ -46,22 +48,61 @@ class Project < ApplicationRecord
             inclusion: { in: Category::OPTIONS },
             allow_blank: true
 
-  def update_status(new_status)
-    if new_status != status
-      if update(status: new_status)
-        return generate_post("status", new_status)
-      end
+  scope :undone, -> { where.not(status: Status::DONE) }
+
+  def update_by_field(key:, value:)
+    result = { status: false }
+    return result if value == self[key]
+
+    if update(key => value)
+      result = generate_post(key, value)
     end
-    false
+
+    result
   end
 
-  def update_category(new_category)
-    if new_category != category
-      if update(category: new_category)
-        return generate_post("category", new_category)
-      end
-      false
-    end
+  def update_tools(data:, user:)
+    hooks = Tool.update_for_project(
+      project_id: data["id"],
+      name: "hooks",
+      key: "description",
+      value: data["project"]["hooks"],
+      user: user,
+    )
+
+    yarns = Tool.update_for_project(
+      project_id: data["id"],
+      name: "yarns",
+      key: "description",
+      value: data["project"]["yarns"],
+      user: user,
+    )
+
+    pattern = Tool.update_for_project(
+      project_id: data["id"],
+      name: "pattern",
+      key: "url",
+      value: data["project"]["pattern"],
+      user: user,
+    )
+
+    {
+      hooks: hooks,
+      yarns: yarns,
+      pattern: pattern
+    }
+  end
+
+  def hooks
+    tools.find_by(name: "hooks")&.description
+  end
+
+  def yarns
+    tools.find_by(name: "yarns")&.description
+  end
+
+  def pattern
+    tools.find_by(name: "pattern")&.url
   end
 
   private
@@ -71,12 +112,12 @@ class Project < ApplicationRecord
 
     post = posts.create(
       auto_generated: true,
-      text: "The project got new #{field_name}",
+      text: "Set the #{field_name} to #{updated_value}",
       user: user,
       updated_value: updated_value,
       updated_field: "category",
     )
 
-    !post.new_record?
+    { status: !post.new_record?, generated_post: post }
   end
 end

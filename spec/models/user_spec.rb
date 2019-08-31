@@ -93,6 +93,29 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#ordered_projects" do
+    let!(:projects) do
+      FactoryBot.create_list(:project, 3, user: current_user)
+    end
+
+    context "when sending initiale projects as a param" do
+      it "returns all user's projects" do
+        expect(current_user.ordered_projects.size).to eq(projects.size)
+      end
+    end
+
+    context "when not sending initiale projects as a param" do
+      it "returns all user's projects" do
+        limit = 2
+        initiale_projects = Project.limit(limit)
+
+        expect(
+          current_user.ordered_projects(initiale_projects).size,
+        ).to eq(limit)
+      end
+    end
+  end
+
   describe "#ordered_posts_with_friends_posts" do
     before do
       current_user.follow(target_user)

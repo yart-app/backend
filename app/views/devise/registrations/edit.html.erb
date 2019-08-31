@@ -1,17 +1,23 @@
 <section class="is-success is-fullheight">
     <div class="has-text-centered">
         <div class="column is-4 is-offset-4">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="box">
-                <figure class="avatar">
-                    <%= user_avatar(resource, class: "uploaded-image") %>
-                </figure>
+                <div class="image-upload">
+                    <label for="file-input">
+                    <figure class="avatar">
+                        <%= user_avatar(resource, class: "uploaded-image") %>
+                    </figure>
+                    </label>
+
+                    <%= f.file_field :avatar, id: "file-input", onchange: "readImageURL(this);" %>
+                </div>
               <h3 class="title has-text-grey">Edit your profile</h3>
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                   <%= devise_error_messages! %>
 
                   <div class="field">
                       <div class="control">
-                          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                          <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
                       </div>
                   </div>
 
@@ -53,26 +59,17 @@
                       </div>
                   </div>
 
-                  <div class="field">
-                      <div class="image-upload">
-                          <label for="file-input">
-                              <span class="fa fa-camera"></span>
-                          </label>
-
-                          <%= f.file_field :avatar, id: "file-input", onchange: "readURL(this);" %>
-                      </div>
-                  </div>
-
                   <%= f.submit "Update", class:"button is-block is-info is-large is-fullwidth" %>
               <% end %>
 
               <%= link_to "Back", :back %>
             </div>
+            <br />
             <div class="box">
               <p>
                 Unhappy?
                 <%=
-                  button_to "Cancel my account",
+                  button_to "Delete my account",
                   registration_path(resource_name),
                   data: { confirm: "Are you sure?" },
                   method: :delete,

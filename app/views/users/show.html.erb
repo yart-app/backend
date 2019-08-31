@@ -2,29 +2,72 @@
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-4"><%= @user.name %></p>
-        <p class="subtitle is-6">@<%= @user.username %></p>
+        <p class="title is-4">
+          <%= @user.name %>
+          <label for="file-input">
+            <a href="/users/edit"><span class="fa fa-cog"></span></a>
+          </label>
+        </p>
+        <p class="subtitle is-6">
+          @<%= @user.username %>
+        </p>
       </div>
 
-      <% unless current_user.id === @user.id %>
-        <div class="media-right">
-            <% if current_user.follow?(@user) %>
-              <%= render "toggle_follow", key: "unfollow" %>
-            <% else %>
-              <%= render "toggle_follow", key: "follow" %>
-            <% end %>
-        </div>
+      <div class="media-right">
+      <% unless current_user.id == @user.id %>
+        <% if current_user.follow?(@user) %>
+          <%= render "toggle_follow", key: "unfollow" %>
+        <% else %>
+          <%= render "toggle_follow", key: "follow" %>
+        <% end %>
       <% end %>
+      </div>
     </div>
 
     <div class="content">
       <%= @user.bio %>
-      <br>
-      <time>Since: <%= @user.created_at.strftime("%Y-%m-%d") %></time>
     </div>
   </div>
+  <footer class="card-footer">
+    <div class="card-footer-item">
+    <%= link_to @user.followers_size + " Followers", "", class: "button no-border"  %>
+    </div>
+    <div class="card-footer-item">
+    <%= link_to @user.followees_size + " Following", "", class: "button card-footer-item no-border"  %>
+    </div>
+  </footer>
 </div>
 
-<div class="columns features is-multiline">
-  <%= render "posts", with_user_data: false %>
+<% if @user.projects.size > 0 %>
+<div class="box card">
+  <% @user.projects.each do |project| %>
+    <article class="post">
+    <a href="/projects/<%= project.id %>" style="display: block;">
+    <h4>
+    <%= project.title %>
+    </h4>
+    <div class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <%= project.created_at.strftime("%Y-%m-%d") %> &nbsp;
+            <% if project.category %>
+            <span class="tag"><%= project.category %></span>
+            <% end %>
+            <span class="tag <%= status_class(project.status) %>">
+              <%= project.status %>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <span class="has-text-grey-light">
+          <i class="fa fa-file"></i> <%= project.posts.count %>
+        </span>
+      </div>
+    </div>
+    </a>
+    </article>
+  <% end %>
 </div>
+<% end %>

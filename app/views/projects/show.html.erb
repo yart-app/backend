@@ -1,14 +1,27 @@
-<div class="level is-mobile">
-  <div class="level-left">
-  <h1 class="title has-text-light is-2">
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
       <%= @project.title %>
-  </h1>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <%= @project.posts.where(auto_generated: false).last&.text %>
+    </div>
   </div>
+  <footer class="card-footer">
+  <% if @project.user === current_user %>
+    <%= render "edit" %>
+    <%= render "edit_tools" %>
+  <% else %>
+    <%= render "details" %>
+    <%= render "tools" %>
+  <% end %>
+  </footer>
 </div>
 
-<%= render "update_fields" %>
-
 <div class="box content">
+  <%= render "tools" %>
   <div class="timeline">
     <header class="timeline-header">
       <span class="tag is-medium is-success"><%= Project::Status::NEW%></span>
@@ -19,14 +32,11 @@
       </div>
       <div class="timeline-content">
         <p class="heading"><%= @project.created_at.strftime("%Y-%m-%d") %></p>
-        <p class="has-text-grey">The project just got created</p>
-        <% unless @project.tools.empty? %>
-          <p>Tools: <%= @project.tools[0].name %></p>
-        <% end %>
+        <p class="has-text-grey"><%= @project.user.username %> started a new project</p>
       </div>
     </div>
 
     <%= render "posts" %>
-    
+
   </div>
 </div>

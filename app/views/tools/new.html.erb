@@ -1,49 +1,50 @@
 <div class="box content">
     <% if flash[:errors] %>
-        <div class="notification is-danger">
-            <ul>
-                <% flash[:errors].each do |m| %>
-                    <li><%= m %></li>
-                <% end %>
-            </ul>
-        </div>
+    <div class="notification is-danger">
+        <ul>
+            <% flash[:errors].each do |m| %>
+            <li><%= m %></li>
+            <% end %>
+        </ul>
+    </div>
     <% end %>
+
     <%= form_for(@tool, url: {action: "create"}) do |f| %>
-          <div class="field">
-              <div class="control">
-                  <%= f.text_field :name, class: "input", placeholder: "Name" %>
-              </div>
-          </div>
-          <div class="field">
-              <div class="control">
-                  <%= f.text_field :url, class: "input", placeholder: "URL" %>
-              </div>
-          </div>
-          <div class="field">
-              <div class="control">
-                  <%= f.text_area :description, class: "textarea", placeholder: "Description" %>
-              </div>
-          </div>
-          <div class="field field-file">
-              <div class="file">
-                  <label class="file-label">
-                      <%= f.file_field :images, class: "file-input", onchange: "readURL(this);" %>
-                          <br>
-                          <span class="file-cta">
-                              <span class="file-label">
-                                  Choose file …
-                              </span>
-                          </span>
-                  </label>
-              </div>
-              <div>
-                  <img class="uploaded-image" src="http://placehold.it/120" alt="your image" />
-              </div>
-          </div>
-          <div class="field">
-              <div class="control">
-                  <%= f.submit "Create", class: "button is-primary" %>
-              </div>
-          </div>
-      <% end %>
+    <div class="field">
+        <div class="control">
+            <%= f.text_field :name, class: "input", placeholder: "Name" %>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <%= f.text_field :url, class: "input", placeholder: "URL" %>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <%= f.text_area :description, class: "textarea", placeholder: "Description" %>
+        </div>
+    </div>
+    <div class="field field-file">
+        <div class="file">
+            <label class="file-label">
+                <%= f.file_field :images, class: "file-input", onchange: "readImageURL(this);" %>
+                <br>
+                <span class="file-cta">
+                    <span class="file-label">
+                        Choose file …
+                    </span>
+                </span>
+            </label>
+        </div>
+        <div>
+            <img class="uploaded-image" src="http://placehold.it/120" alt="your image" />
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <%= f.submit "Create", class: "button is-primary" %>
+        </div>
+    </div>
+    <% end %>
 </div>

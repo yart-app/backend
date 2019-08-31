@@ -1,6 +1,4 @@
 class ToolsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @tools = Tool.where(user: current_user).order(created_at: "desc").to_a
   end

@@ -1,0 +1,23 @@
+<div class="modal tools-modal">
+  <div class="modal-background2"></div>
+  <div class="modal-content">
+    <div class="card">
+      <p class="title is-5"><%= hook_title(@project.category) %></p>
+      <input type="hidden" id="id" name="id" value="<%= @project.id %>" />
+      <div class="control">
+        <%= @project.hooks %>
+      </div>
+
+
+      <p class="title is-5">Yarns</p>
+      <div class="control">
+        <%= @project.yarns %>
+      </div>
+
+      <p class="title is-5">Pattern</p>
+      <div class="control">
+        <%= link_to @project.pattern, @project.pattern %>
+      </div>
+    </div>
+  </div>
+</div>

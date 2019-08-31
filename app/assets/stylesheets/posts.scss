@@ -1,0 +1,47 @@
+@import "bulma/bulma";
+
+.post-content {
+  background: #f3f3f3;
+  padding: 24px;
+  margin-bottom: 1.5rem;
+  border-radius: 24px;
+  border-bottom-left-radius: 2px;
+}
+
+@include from($tablet) {
+  .post-image.image {
+    max-height: 400px;
+    overflow: hidden;
+  }
+}
+
+.new-post .fa-camera {
+  font-size: 32px;
+}
+
+.likes-size {
+  margin-left: 5px;
+}
+
+.add-comment {
+  padding: 16px;
+  height: 64px;
+  border: 0px;
+  box-shadow: none;
+  background: #f2f2f2;
+  border-radius: 0;
+}
+
+.comment-section {
+  padding: 8px 24px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.more-comments {
+  border-width: 0px;
+  cursor: pointer;
+}
+
+.like {
+  cursor: pointer;
+}

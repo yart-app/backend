@@ -1,0 +1,23 @@
+.select2-container {
+  .select2-selection--single {
+    height: auto !important;
+    padding: 4px 0 !important;
+    border: 1px solid #dbdbdb !important;
+
+    .select2-selection__arrow {
+      display: none;
+    }
+
+    .select2-selection__placeholder {
+      color: #dbdbdb !important;
+    }
+  }
+
+  .select2-search__field {
+    padding: 8px !important;
+    font-size: 16px;
+  }
+
+  z-index: 1000;
+  position: absolute;
+}

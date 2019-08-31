@@ -8,27 +8,12 @@ RSpec.describe ProjectsController, type: :request do
     FactoryBot.create_list(:project, 3, user: user)
   end
 
-  describe "#index" do
-    before do
-      get "/projects"
-    end
-
-    it "renders projects index view" do
-      expect(response).to render_template(:index)
-    end
-
-    it "gets all user's projects" do
-      user_projects = user.projects.order(created_at: "desc").to_a
-      expect(assigns(:projects)).to eql user_projects
-    end
-  end
-
   describe "#new" do
     before do
       get "/projects/new"
     end
 
-    it "renders projects index view" do
+    it "renders projects new view" do
       expect(response).to render_template(:new)
     end
 
@@ -57,9 +42,10 @@ RSpec.describe ProjectsController, type: :request do
       )
     end
 
-    it "redirects to the root url" do
-      post "/projects", params: { project: FactoryBot.attributes_for(:project) }
-      expect(response).to redirect_to projects_url
+    it "redirects to the project's url" do
+      project = FactoryBot.attributes_for(:project)
+      post "/projects", params: { project: project }
+      expect(response).to redirect_to project_url(id: Project.last.id)
     end
   end
 

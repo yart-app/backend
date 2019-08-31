@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+<%= content_tag :input, type: "hidden", class: "onboarded", value: current_user.onboarded do %>
+<% end %>
+
+<%# <button class="new-project-button button btn-primary">
+    <i class="fa fa-plus float"></i>
+</button> %>
+
+<nav class="mobile-navbar is-hidden-tablet">
+    <a class="navbar-item is-expanded is-inline-block has-text-centered" href="/profile/<%= current_user.id %>">
+        <i class="fa fa-user"></i>
+        <p class="is-size-7">Profile</p>
+    </a>
+    <a class="navbar-item is-expanded is-inline-block  has-text-centered" href="/">
+        <i class="fa fa-home"></i>
+        <p class="is-size-7">Home</p>
+    </a>
+    <a class="navbar-item is-expanded is-inline-block has-text-centered" href="/projects/new">
+        <i class="fa fa-plus-circle"></i>
+        <p class="is-size-7">New porject</p>
+    </a>
+    <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item is-expanded is-inline-block has-text-centered" do %>
+    <i class="fa fa-sign-out"></i>
+    <p class="is-size-7">Logout</p>
+    <% end %>
+</nav>
+<% end %>

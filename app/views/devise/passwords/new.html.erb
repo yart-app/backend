@@ -1,5 +1,5 @@
 <section class="hero is-success is-fullheight">
-    <div class="hero-body">
+    <div>
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
                 <div class="box">
@@ -10,15 +10,16 @@
                         <div class="notification is-danger"><%= alert %><%= devise_error_messages! %></div>
                         <div class="field">
                             <div class="control">
-                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                                <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
                             </div>
                         </div>
-                        <%= f.submit "Send me reset password instructions", class:"button is-block is-info is-large is-fullwidth" %>
+                        <%= f.submit "Send reset password instructions", class:"button is-block is-primary is-large is-fullwidth" %>
                     <% end %>
+                    <br />
+                    <p class="has-text-grey">
+                        <%= render "devise/shared/links" %>
+                    </p>
                 </div>
-                <p class="has-text-grey">
-                    <%= render "devise/shared/links" %>
-                </p>
             </div>
         </div>
     </div>

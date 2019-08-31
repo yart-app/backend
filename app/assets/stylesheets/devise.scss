@@ -1,16 +1,12 @@
 // Bulma by Jeremy Thomas. The source code is licensed MIT.
 .hero.is-success {
-    background: #fce6e6 !important;
+    background: transparent !important;
 }
 
 .hero .nav,
 .hero.is-success .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
-}
-
-.box {
-    margin-top: 5rem;
 }
 
 .avatar {

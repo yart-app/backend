@@ -1,6 +1,7 @@
 class ArrayLengthValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return unless validate_options(options, value)
+
     array_size = value.size
 
     minimum = options[:minimum] || array_size
@@ -17,6 +18,7 @@ class ArrayLengthValidator < ActiveModel::EachValidator
   def validate_options(options, value)
     return false unless options.key?(:minimum) || options.key?(:maximum)
     return false unless value.respond_to?(:size)
+
     true
   end
 

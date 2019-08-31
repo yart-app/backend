@@ -21,29 +21,50 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: Regexp.new(/\A[a-z0-9_]{3,20}\z/) }
 
-  def ordered_projects
-    projects.order(created_at: "desc")
+  acts_as_voter
+
+  def set_as_onboarded
+    update(onboarded: true)
+  end
+
+  def ordered_projects(initial_projects = nil, order_by = "desc")
+    initial_projects ||= projects
+
+    initial_projects.order(created_at: order_by)
+  end
+
+  def undone_projects(initial_projects = nil)
+    initial_projects ||= projects
+
+    initial_projects.undone
   end
 
   def ordered_posts(include_auto_generated: true)
     result = posts.order(created_at: "desc")
     return result if include_auto_generated
+
     result.where(auto_generated: false)
   end
 
   def ordered_posts_with_friends_posts
     ids = [id] + followees.ids
-    Post.where(user_id: ids, auto_generated: false).order(created_at: "desc")
+
+    Post.where(
+      user_id: ids,
+      auto_generated: false,
+    ).order(created_at: "desc")
   end
 
   def follow(target_user)
     return false if follow?(target_user)
+
     follow = Follow.create(follower: self, followee: target_user)
     follow.persisted?
   end
 
   def unfollow(target_user)
     return false unless follow?(target_user)
+
     follow = Follow.find_by(follower: self, followee: target_user).destroy
     follow.destroyed?
   end
@@ -62,5 +83,22 @@ class User < ApplicationRecord
 
   def followed_by?(user)
     followers.exists?(user.id)
+  end
+
+  def toggle_like(post)
+    if voted_up_on?(post)
+      dislikes(post)
+      return false
+    end
+
+    likes(post)
+  end
+
+  def followers_size
+    followers.size.to_s
+  end
+
+  def followees_size
+    followers.size.to_s
   end
 end

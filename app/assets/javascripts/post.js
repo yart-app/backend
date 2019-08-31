@@ -1,83 +1,30 @@
-$(document).on('turbolinks:load', function () {
-  function postComment(target, input) {
-    var data = {
-      'comment': {
-        'text': target.value,
-        'post_id': target.id,
-      }
+"use strict";
+function readImageURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('.uploaded-image').attr('src', e.target.result);
+      $('.uploaded-image').removeAttr("style");
     };
 
-    var comments_container = $('#comments_container_' + data.comment.post_id);
-
-    $.post("/comments", data, function (response, status) {
-      if (status !== 422) {
-        var comment_open_div = '<div class="comment-section">';
-        var comment_close_div = '</div>';
-
-        comments_container.prepend(
-          comment_open_div +
-          "<strong>" +
-          response.comment.username +
-          ": </strong>" +
-          response.comment.text +
-          comment_close_div);
-        input.val('');
-      }
-    });
+    reader.readAsDataURL(input.files[0]);
   }
+}
 
-  $('.comment').keypress(function (e) {
-    var input = $(this);
+function runIntoJsOnSubmitBtn() {
+  var onboarded = $('.onboarded').val();
 
-    if (e.keyCode == 13) {
-      postComment(e.target, input);
-    }
-  });
+  if (onboarded == "false") {
+    // Use setTimeOut here to wait for dom to update before
+    // starting introJs and focus on submit button
 
-  function getComments(target, page) {
+    setTimeout(function() {
+      introJs().setOptions({
+        'scrollTo': $('.submit'),
+      });
 
-    var data = {
-      'page': page,
-      'post_id': target.id,
-    };
-
-    var comments_container = $('#comments_container_' + data.post_id);
-
-    $.get("/comments", data, function (response, status) {
-      if (status !== 422) {
-        var comment_open_div = '<div class="comment-section">';
-        var comment_close_div = '</div>';
-
-        response.comments.forEach(function(comment) {
-          comments_container.append(
-            comment_open_div +
-            "<strong>" +
-            comment.username +
-            ": </strong>" +
-            comment.text +
-            comment_close_div
-          );
-        });
-
-        if (response.next == 0)
-        {
-          console.log('response.next: ', response.next);
-          $(target).addClass('hidden');
-        }
-      }
-    });
+      introJs().goToStepNumber(5).start();
+    }, 50);
   }
-
-  function getNextPage(target) {
-    var page = $('#page_' + target.id).val();
-    var nextPage = parseInt(page) + 1;
-
-    $('#page_' + target.id).val(nextPage);
-
-    return nextPage;
-  }
-
-  $('.more-comments').click(function (e) {
-    getComments(e.target, getNextPage(e.target));
-  });
-});
+}
