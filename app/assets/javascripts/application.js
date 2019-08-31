@@ -48,3 +48,4 @@ $(document).on('turbolinks:load', function () {
     menu.classList.toggle('is-active');
   });
 });
+//= require serviceworker-companion
