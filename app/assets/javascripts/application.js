@@ -12,8 +12,10 @@
 //
 //= require rails-ujs
 //= require turbolinks
+
 //= require intro.js/minified/intro.min.js
 //= require select2/dist/js/select2.min
+//= require serviceworker-companion
 //= require_tree .
 
 "use strict";
@@ -48,4 +50,19 @@ $(document).on('turbolinks:load', function () {
     menu.classList.toggle('is-active');
   });
 });
-//= require serviceworker-companion
+
+// credits: https://github.com/turbolinks/turbolinks/issues/17#issuecomment-230169838
+Turbolinks.ProgressBar.prototype.refresh = function () {}
+Turbolinks.ProgressBar.defaultCSS = ""
+
+Turbolinks.ProgressBar.prototype.installProgressElement = function () {
+  return $('body').before($('<div class="overlay"></div><div class="wait"><i class="fa fa-hourglass-o fa-spin"></i></div>'));
+}
+
+Turbolinks.ProgressBar.prototype.uninstallProgressElement = function () {
+  $(document).find('.wait, .overlay').remove();
+}
+
+Turbolinks.BrowserAdapter.prototype.showProgressBarAfterDelay = function () {
+  return this.progressBarTimeout = setTimeout(this.showProgressBar, 50);
+};
