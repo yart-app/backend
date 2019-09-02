@@ -55,10 +55,6 @@ $(document).on('turbolinks:load', function () {
 Turbolinks.ProgressBar.prototype.refresh = function () {}
 Turbolinks.ProgressBar.defaultCSS = ""
 
-Turbolinks.ProgressBar.prototype.installProgressElement = function () {
-  return $('body').before($('<div class="overlay"></div><div class="wait"><i class="fa fa-hourglass-o fa-spin"></i></div>'));
-}
-
 Turbolinks.ProgressBar.prototype.uninstallProgressElement = function () {
   $(document).find('.wait, .overlay').remove();
 }
