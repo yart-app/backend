@@ -109,4 +109,20 @@ class User < ApplicationRecord
   def followees_size
     followers.size.to_s
   end
+
+  def send_notification(message:)
+    if notification_subscription_endpoint
+      Webpush.payload_send(
+        message: message,
+        endpoint: notification_subscription_endpoint,
+        p256dh: p256dh_key,
+        auth: auth_key,
+        vapid: {
+          subject: "mailto:#{email}",
+          public_key: Rails.application.credentials.vapid_public_key,
+          private_key: Rails.application.credentials.vapid_private_key
+        },
+      )
+    end
+  end
 end
