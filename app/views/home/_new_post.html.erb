@@ -26,11 +26,13 @@
                     </div>
                     <div class="field">
                         <div class="control is-expended">
-                            <div
-                                class="select is-fullwidth"
-                            >
+                        <% if @projects.empty? %>
+                            You don't have a project yet, but you still can create posts.
+                        <% else %>
+                            <div class="select is-fullwidth">
                                 <%= select_tag :project, options_for_select(@projects.collect{ |p| [p.title, p.id] }), { class: "select2-with-create-option" } %>
                             </div>
+                        <% end %>
                         </div>
                     </div>
                     <div class="field">
