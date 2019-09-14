@@ -6,6 +6,13 @@ class Post < ApplicationRecord
             length: { maximum: 700 }
 
   validate :content_presence
+  validates :image,
+            content_type: ["image/png", "image/jpg", "image/jpeg"],
+            aspect_ratio: :is_4_5,
+            dimension: {
+              width: { min: 320, max: 1080 },
+              height: { min: 566, max: 1350 }
+            }
 
   belongs_to :user
   belongs_to :project, optional: true
@@ -28,6 +35,10 @@ class Post < ApplicationRecord
     post.set_project(project_identifier: data["project"])
     post.save
     post
+  end
+
+  def url
+    "/posts/#{id}"
   end
 
   def content?
