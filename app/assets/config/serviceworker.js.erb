@@ -59,12 +59,12 @@ function onFetch(event) {
 }
 
 function onPush(event) {
-  const title = (event.data && event.data.text()) || "Yay a message";
-  const body = title;
-  const icon = '<%= asset_path "icon-384x384.png" %>';
-  const tag = 'renotify';
-  const renotify = true;
-  const requireInteraction = true;
+  var title = (event.data && event.data.text()) || "Yay a message";
+  var body = title;
+  var icon = '<%= asset_path "icon-384x384.png" %>';
+  var tag = 'renotify';
+  var renotify = true;
+  var requireInteraction = true;
 
   event.waitUntil(
     self.registration.showNotification(title, { body, icon, tag, renotify, requireInteraction })
