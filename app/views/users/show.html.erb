@@ -38,11 +38,25 @@
   </footer>
 </div>
 
+<div class="is-centered tabs is-medium is-toggle is-fullwidth">
+  <ul>
+    <li class="is-active"><a>Posts</a></li>
+    <li><a>Projects</a></li>
+  </ul>
+</div>
+
+<div class="is-12 tabs-content">
+  <div class="tab-content is-active">
+    <% @user.posts.each do |post| %>
+        <%= render partial: 'posts/show', locals: { post: post, with_user_data: false } %>
+    <% end %>
+  </div>
+  <div class="tab-content">
 <% if @user.projects.size > 0 %>
 <div class="box card">
   <% @user.projects.each do |project| %>
     <article class="post">
-    <a href="/projects/<%= project.id %>" style="display: block;">
+    <a rel="prefetch" href="/projects/<%= project.id %>" style="display: block;">
     <h4>
     <%= project.title %>
     </h4>
@@ -71,3 +85,5 @@
   <% end %>
 </div>
 <% end %>
+  </div>
+</div>
