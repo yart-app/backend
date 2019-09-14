@@ -6,4 +6,12 @@ module ApplicationHelper
       image_tag "default_avatar.png", options
     end
   end
+
+  def favorite_icon(post)
+    if current_user.voted_up_on?(post)
+      return "favorite"
+    end
+
+    "favorite_border"
+  end
 end
