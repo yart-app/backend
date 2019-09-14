@@ -78,3 +78,9 @@ gem "acts_as_votable", "~> 0.12.0"
 gem "rubocop-rspec", "~> 1.27"
 
 gem "serviceworker-rails", "~> 0.5.5"
+
+gem "webpush", "~> 1.0"
+
+gem "active_storage_validations", "~> 0.8.3"
+
+gem "mini_magick", "~> 4.9"
