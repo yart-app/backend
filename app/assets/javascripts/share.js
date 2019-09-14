@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function () {
       navigator.share({
         title: "Yart " + event.target.dataset.text,
         url: location.origin + event.target.dataset.url,
-      }).then(() => {
+      }).then(function() {
         console.log('Thanks for sharing!');
       }).catch(console.error);
     }

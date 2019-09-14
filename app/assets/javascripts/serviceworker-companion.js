@@ -1,15 +1,13 @@
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
-    .then(function(reg) {
-      console.log('[Companion]', 'Service worker registered!');
-    });
+    .then(function(reg) {});
 
   navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
     serviceWorkerRegistration.pushManager
       .subscribe({
         userVisibleOnly: true,
         applicationServerKey: window.vapidPublicKey
-      }).then((subscription) => {
+      }).then(function(subscription) {
         var data = {
           subscription: subscription.toJSON()
         };
