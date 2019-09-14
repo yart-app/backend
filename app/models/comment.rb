@@ -15,7 +15,7 @@ class Comment < ApplicationRecord
     comment.save
 
     comment.target.user.send_notification(
-      message: "#{user.username} commented on your #{comment.target.class.name}",
+      message: "#{user.username} commented on your #{comment.target_name}",
     )
 
     comment
@@ -23,6 +23,10 @@ class Comment < ApplicationRecord
 
   def target
     post || project
+  end
+
+  def target_name
+    target.class.name
   end
 
   def belongs_to_post_or_project
