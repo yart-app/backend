@@ -190,3 +190,16 @@ body {
 .float {
     margin-top: 22px;
 }
+
+.tabs.is-toggle a,
+.tabs.is-toggle a:hover {
+    border-color: #a896e0;
+}
+
+.tab-content {
+    display: none;
+
+    &.is-active {
+        display: block;
+    }
+}
