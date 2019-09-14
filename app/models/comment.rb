@@ -13,7 +13,16 @@ class Comment < ApplicationRecord
     comment = Comment.new(data)
     comment.user = user
     comment.save
+
+    comment.target.user.send_notification(
+      message: "#{user.username} commented on your #{comment.target.class.name}",
+    )
+
     comment
+  end
+
+  def target
+    post || project
   end
 
   def belongs_to_post_or_project

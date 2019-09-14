@@ -93,11 +93,14 @@ class User < ApplicationRecord
     followers.exists?(user.id)
   end
 
+  # TODO: Move this method to post class or to a "likable" concern
   def toggle_like(post)
     if voted_up_on?(post)
       dislikes(post)
       return false
     end
+
+    post.user.send_notification(message: "#{username} liked your post!")
 
     likes(post)
   end
