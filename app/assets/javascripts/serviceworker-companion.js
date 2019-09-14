@@ -2,7 +2,7 @@ if (navigator.serviceWorker) {
   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
     .then(function(reg) {});
 
-  navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
+  navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
     serviceWorkerRegistration.pushManager
       .subscribe({
         userVisibleOnly: true,
