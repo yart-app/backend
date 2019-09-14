@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[like]
+  before_action :set_post, only: %i[like show]
 
   def create
     @post = Post.custom_create(
