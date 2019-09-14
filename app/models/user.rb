@@ -55,6 +55,14 @@ class User < ApplicationRecord
     ).order(created_at: "desc")
   end
 
+  def subscribe_to_notifications(data:)
+    update(
+      notification_subscription_endpoint: data[:endpoint],
+      p256dh_key: data[:keys][:p256dh],
+      auth_key: data[:keys][:auth],
+    )
+  end
+
   def follow(target_user)
     return false if follow?(target_user)
 

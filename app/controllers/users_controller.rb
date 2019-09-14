@@ -20,8 +20,11 @@ class UsersController < ApplicationController
     user.set_as_onboarded
   end
 
-  private
+  def subscribe_to_notifications
+    current_user.subscribe_to_notifications(data: params[:subscription])
+  end
 
+  private
   def set_user
     @user = User.find_by(id: params[:id])
 

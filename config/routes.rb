@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post "follow", to: "users#follow", as: "follow"
     post "unfollow", to: "users#unfollow", as: "unfollow"
     post "toggle_follow", to: "users#toggle_follow", as: "toggle_follow"
+    post "subscribe_to_notifications", to: "users#subscribe_to_notifications"
 
     scope :onboarding do
       post :finish, to: "users#finish_onboarding"
