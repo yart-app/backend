@@ -12,6 +12,7 @@ FactoryBot.define do
           io: file,
           filename: "cat-1.jpg",
           content_type: "image/jpeg",
+          identify: false,
         )
       end
     end
