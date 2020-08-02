@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :tool do
     name { Faker::Science.element }
-    url { Faker::Internet.url("example.com") }
+    url { Faker::Internet.url(host: "example.com") }
     association :user
 
     factory :tool_with_image do
