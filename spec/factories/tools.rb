@@ -6,7 +6,7 @@ FactoryBot.define do
 
     factory :tool_with_image do
       after(:build) do |tool|
-        image_path = Rails.root.join("spec", "factories", "images", "cat-1.jpg")
+        image_path = Rails.root.join("spec", "fixtures", "files", "cat-1.jpg")
         file = File.open(image_path)
         tool.images.attach(
           io: file,

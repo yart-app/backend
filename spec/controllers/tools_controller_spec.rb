@@ -38,8 +38,13 @@ RSpec.describe ToolsController, type: :request do
   end
 
   describe "#create" do
-    let!(:path) { Rails.root.join("spec", "factories", "images", "cat-1.jpg") }
-    let!(:image) { fixture_file_upload(path) }
+    let!(:image) do
+      ActiveStorage::Blob.create_after_upload!(
+        io: File.open(fixture_path + "/files/cat-1.jpg"),
+        filename: "cat-1.jpg",
+        content_type: "image/jpeg" # Or figure it out from `name` if you have non-JPEGs
+      ).signed_id
+    end
     let!(:params) { FactoryBot.attributes_for(:tool).merge(images: [image]) }
 
     it "creates new tool" do
