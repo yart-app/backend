@@ -10,6 +10,6 @@ FactoryBot.define do
       ("0".."z").to_a.shuffle[0, pw_length].join
     end
     name { Faker::Name.first_name }
-    username { Faker::Lorem.characters(6) }
+    username { Faker::Base.regexify /^[a-z0-9_]{3,20}$/ }
   end
 end
