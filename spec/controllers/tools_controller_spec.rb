@@ -42,7 +42,7 @@ RSpec.describe ToolsController, type: :request do
       ActiveStorage::Blob.create_after_upload!(
         io: File.open(fixture_path + "/files/cat-1.jpg"),
         filename: "cat-1.jpg",
-        content_type: "image/jpeg" # Or figure it out from `name` if you have non-JPEGs
+        content_type: "image/jpeg",
       ).signed_id
     end
     let!(:params) { FactoryBot.attributes_for(:tool).merge(images: [image]) }
