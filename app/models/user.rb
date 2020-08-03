@@ -100,9 +100,9 @@ class User < ApplicationRecord
       return false
     end
 
-    post.user.send_notification(message: "#{username} liked your post!")
-
     likes(post)
+
+    post.user.send_notification(message: "#{username} liked your post!")
   end
 
   def followers_size
