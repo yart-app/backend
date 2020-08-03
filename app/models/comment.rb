@@ -8,17 +8,20 @@ class Comment < ApplicationRecord
             length: { maximum: 500 }
 
   validate :belongs_to_post_or_project
+  after_create :notify_user
 
   def self.add(data, user)
     comment = Comment.new(data)
     comment.user = user
     comment.save
 
-    comment.target.user.send_notification(
+    comment
+  end
+
+  def notify_user
+    target.user.send_notification(
       message: "#{user.username} commented on your #{comment.target_name}",
     )
-
-    comment
   end
 
   def target
