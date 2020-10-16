@@ -24,3 +24,11 @@
 storage
 
 /master.key.new
+
+/.env
+
+# Ignore VS Code configs
+.vscode
+
+# Ignore system files
+.DS_Store
