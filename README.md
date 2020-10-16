@@ -22,7 +22,7 @@ Contribution to this project will be always welcoming, however right now we need
 ...
 
 ### Database creation:
-Right now we use Sqlite so all you need is to run `rails db:migrate` in order to create the db.
+The used database is PostgreSQL so all you need is to run `rails db:migrate` in order to create the db.
 
 ### Database initialization:
 ...
