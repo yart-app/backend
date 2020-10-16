@@ -24,7 +24,9 @@ default: &default
 
 development:
   <<: *default
-  database: yart_development
+  database: <%= ENV['YART_DATABASE_NAME'] %>
+  username: <%= ENV['YART_DATABASE_USER'] %>
+  password: <%= ENV['YART_DATABASE_PASSWORD'] %>
   min_messages: WARNING
   pool: 5
   host: db
