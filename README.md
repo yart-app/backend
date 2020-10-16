@@ -29,3 +29,6 @@ The used database is PostgreSQL so all you need is to run `rails db:migrate` in 
 
 ### How to run the test suite:
 `bundle exe rspec`
+
+### To run the project using Docker:
+- Make a copy of `.env.example` as `docker.env` then run `docker-compose up`
