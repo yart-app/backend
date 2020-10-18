@@ -24,7 +24,7 @@ default: &default
   database: <%= ENV['YART_DATABASE_NAME'] %>
   username: <%= ENV['YART_DATABASE_USER'] %>
   password: <%= ENV['YART_DATABASE_PASSWORD'] %>
-  host: db
+  host: <%= ENV.fetch("YART_DATABASE_HOST") { localhost } %>
 
 development:
   <<: *default
