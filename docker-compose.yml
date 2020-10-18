@@ -11,7 +11,6 @@ services:
       - POSTGRES_USER=$YART_DATABASE_USER
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-      - db_socket:/var/run/postgresql
     # To insure Postgress has booted before running the app container, along side db_socket
     healthcheck:
       test: pg_isready -U postgres -h 127.0.0.1
@@ -35,7 +34,6 @@ services:
       - ".env"
     volumes:
       - .:/usr/src/app:cached
-      - db_socket:/var/run/postgresql
     volumes_from:
       - box
     command: sh -c "yarn install &&
@@ -48,6 +46,3 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
-volumes:
-  db_socket:
