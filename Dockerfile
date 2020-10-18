@@ -17,6 +17,7 @@ RUN npm install -g yarn
 ENV app /usr/src/app
 RUN mkdir $app
 WORKDIR $app
+ENV PATH $PATH:$app/bin
 
 RUN gem install bundler
 
