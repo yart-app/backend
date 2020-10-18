@@ -32,8 +32,11 @@ services:
       - "3000:3000"
     env_file:
       - ".env"
+    environment:
+      HISTFILE: /bash/.bash_history
     volumes:
       - .:/usr/src/app:cached
+      - ./tmp/bash/:/bash/:cached
     volumes_from:
       - box
     command: sh -c "yarn install &&
