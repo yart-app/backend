@@ -22,10 +22,16 @@ Contribution to this project will be always welcoming, however right now we need
 ...
 
 ### Database creation:
-Right now we use Sqlite so all you need is to run `rails db:migrate` in order to create the db.
+The used database is PostgreSQL so all you need is to run `rails db:migrate` in order to create the db.
 
 ### Database initialization:
 ...
 
 ### How to run the test suite:
 `bundle exe rspec`
+
+### To run the project using Docker:
+Make a copy of `.env.example` as `docker.env` then run `docker-compose up`
+
+### To run the test suite using Docker:
+Connect to the app container `docker exec -it yart_app_1 /bin/bash` then run `RAILS_ENV=test bundle exec rspec`
