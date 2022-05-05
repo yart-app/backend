@@ -10,19 +10,11 @@ services:
       - POSTGRES_PASSWORD=$YART_DATABASE_PASSWORD
       - POSTGRES_USER=$YART_DATABASE_USER
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     # To insure Postgress has booted before running the app container, along side db_socket
     healthcheck:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
-
-  # A neat trick to prevent reinstalling Gems on every build
-  # https://medium.com/magnetis-backstage/how-to-cache-bundle-install-with-docker-7bed453a5800
-  box:
-    image: busybox
-    volumes:
-      - /box
-    command: tail -f /dev/null
 
   app:
     image: yart
@@ -37,9 +29,8 @@ services:
     volumes:
       - .:/usr/src/app:cached
       - ./tmp/bash/:/bash/:cached
-    volumes_from:
-      - box
     command: sh -c "yarn install &&
+      bundle config set force_ruby_platform true &&
       bundle check || bundle install &&
       bundle exec rails db:create &&
       bundle exec rails db:migrate &&
@@ -49,3 +40,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+volumes:
+  db-data:

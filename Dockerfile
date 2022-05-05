@@ -21,7 +21,4 @@ ENV PATH $PATH:$app/bin
 
 RUN gem install bundler
 
-# Change the bundle path to the box container
-ENV BUNDLE_PATH /box
-
 ADD . $app
