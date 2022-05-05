@@ -30,6 +30,7 @@ services:
       - .:/usr/src/app:cached
       - ./tmp/bash/:/bash/:cached
     command: sh -c "yarn install &&
+      bundle config set force_ruby_platform true &&
       bundle check || bundle install &&
       bundle exec rails db:create &&
       bundle exec rails db:migrate &&
