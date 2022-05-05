@@ -16,14 +16,6 @@ services:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
 
-  # A neat trick to prevent reinstalling Gems on every build
-  # https://medium.com/magnetis-backstage/how-to-cache-bundle-install-with-docker-7bed453a5800
-  box:
-    image: busybox
-    volumes:
-      - /box
-    command: tail -f /dev/null
-
   app:
     image: yart
     build:
@@ -37,8 +29,6 @@ services:
     volumes:
       - .:/usr/src/app:cached
       - ./tmp/bash/:/bash/:cached
-    volumes_from:
-      - box
     command: sh -c "yarn install &&
       bundle check || bundle install &&
       bundle exec rails db:create &&
