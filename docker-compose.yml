@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=$YART_DATABASE_PASSWORD
       - POSTGRES_USER=$YART_DATABASE_USER
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     # To insure Postgress has booted before running the app container, along side db_socket
     healthcheck:
       test: pg_isready -U postgres -h 127.0.0.1
@@ -49,3 +49,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+volumes:
+  db-data:
