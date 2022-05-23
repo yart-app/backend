@@ -14,4 +14,12 @@ module ApplicationHelper
 
     "favorite_border"
   end
+
+  def current_user_path
+    profile_url(current_user.id)
+  end
+
+  def is_active_link (path)
+      current_page?(path) && 'has-text-primary'
+  end
 end
