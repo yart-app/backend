@@ -20,7 +20,7 @@ class Comment < ApplicationRecord
 
   def notify_user
     target.user.send_notification(
-      message: "#{user.username} commented on your #{comment.target_name}",
+      message: "#{user.username} commented on your #{self.target_name}",
     )
   end
 
