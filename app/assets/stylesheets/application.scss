@@ -185,3 +185,9 @@ body {
         display: block;
     }
 }
+
+@include touch {
+    .navbar-brand {
+        justify-content: center;
+    }
+}
