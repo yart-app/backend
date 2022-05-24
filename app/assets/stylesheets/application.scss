@@ -26,17 +26,10 @@
 html,
 body {
     font-family: 'Open Sans', serif;
-    font-size: 13px;
+    font-size: 16px;
     max-width: 100%;
     overflow-x: hidden;
     height: 100%;
-}
-
-@include from($tablet) {
-    html,
-    body {
-        font-size: 16px;
-    }
 }
 
 body section {
