@@ -1,0 +1,16 @@
+<div id="comments_container_<%= post_id %>">
+    <% comments[:chunk].each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+    <% end %>
+</div>
+
+<input
+    type="text"
+    class="hidden"
+    autocomplete="off"
+    id="page_<%= post_id %>"
+    value="1"
+>
+<div class="has-text-centered more-comments <%= "hidden" if comments[:next] == 0 %>" id="<%= post_id %>">
+    <i class="material-icons" id="<%= post_id %>">more_horiz</i>
+</div>

@@ -57,34 +57,7 @@
         </div>
     </div>
 
-    <% comments = post.limited_comments(page: 1) %>
+    <%= render 'comments/index', comments: post.limited_comments(page: 1), post_id: post.id %>
 
-    <div id="comments_container_<%= post.id %>">
-        <% comments[:chunk].each do |comment| %>
-            <div class="comment-section">
-                <strong><%= comment.user.name %>: </strong><%= comment.text %>
-            </div>
-        <% end %>
-    </div>
-    <input
-        type="text"
-        class="hidden"
-        autocomplete="off"
-        id="page_<%= post.id %>"
-        value="1"
-    >
-    <div class="has-text-centered more-comments <%= "hidden" if comments[:next] == 0 %>" id="<%= post.id %>">
-        <i class="material-icons" id="<%= post.id %>">more_horiz</i>
-    </div>
-
-    <div class="field">
-        <div class="control">
-            <input
-                id="<%= post.id %>"
-                class="input add-comment comment-section"
-                type="text"
-                placeholder="Add a comment . . ."
-            >
-        </div>
-    </div>
+    <%= render 'comments/create', post_id: post.id %>
 </div>
