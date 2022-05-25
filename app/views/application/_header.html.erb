@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top px-4" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <%= link_to root_url, class: "navbar-item" do %>
         <%= image_tag "logo.png", alt: "Yart Logo", height: "40" %>
@@ -9,17 +9,8 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <%= link_to "Home", root_url, class: "navbar-item #{is_active_link(root_url)}" %>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link <%= is_active_link(current_user_path) %>">
-                    Profile
-                </a>
-
-                <div class="navbar-dropdown">
-                    <%= link_to "Profile", current_user_path, class: "navbar-item is-hidden-mobile"  %>
-                    <hr class="navbar-divider">
-                    <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
-                </div>
-            </div>
+            <%= link_to "Profile", current_user_path, class: "navbar-item is-hidden-mobile #{is_active_link(current_user_path)}" %>
+            <%= link_to "Settings", edit_user_registration_path, class: "navbar-item is-hidden-mobile #{is_active_link(edit_user_registration_path)}" %>
         </div>
 
         <div class="navbar-end">
@@ -31,6 +22,19 @@
                     ) do %>
                     <strong>New project</strong>
                     <% end %>
+                </div>
+            </div>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <%= current_user.name %>
+                </a>
+
+                <div class="navbar-dropdown is-right">
+                    <%= link_to "Profile", current_user_path, class: "navbar-item is-hidden-mobile"  %>
+                    <%= link_to "Settings", edit_user_registration_path, class: "navbar-item is-hidden-mobile"  %>
+                    <hr class="navbar-divider">
+                    <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
                 </div>
             </div>
         </div>
