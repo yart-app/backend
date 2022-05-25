@@ -9,7 +9,7 @@
     <% end %>
 
     <% if with_user_data %>
-        <div class="media m-0 p-4">
+        <div class="media m-0 pt-4 pb-2 px-4">
             <a href="<%= profile_url(post.user.id) %>" style="display:block;">
                 <div class="media-left">
                     <figure class="image is-48x48 user-avatar">
@@ -54,13 +54,15 @@
         </div>
     <% end %>
 
-    <div class="card-content p-0 mb-4">
+    <div class="card-content pt-0 pb-4 px-4">
         <% unless post.text.empty? %>
-            <div class="post-content px-4"><%= post.text %></div>
+            <p class="post-content"><%= post.text %></p>
         <% end %>
     </div>
 
-    <%= render 'comments/index', comments: post.limited_comments(page: 1), post_id: post.id %>
+    <% unless post.comments.empty? %>
+        <%= render 'comments/index', comments: post.limited_comments(page: 1), post_id: post.id %>
+    <% end %>
 
     <%= render 'comments/create', post_id: post.id %>
 </div>
