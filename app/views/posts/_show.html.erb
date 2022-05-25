@@ -9,8 +9,8 @@
     <% end %>
 
     <% if with_user_data %>
-        <div class="media m-0 pt-4 pb-2 px-4">
-            <a href="<%= profile_url(post.user.id) %>" style="display:block;">
+        <div class="media m-0 pt-4 px-4">
+            <a href="<%= profile_url(post.user.id) %>">
                 <div class="media-left">
                     <figure class="image is-48x48 user-avatar">
                         <%= user_avatar(post.user) %>
@@ -19,7 +19,7 @@
 
                 <div class="media-content">
                     <div class="is-flex">
-                        <p class="title is-6 mr-2"><%= post.user.name %></p>
+                        <p class="title is-6 mr-1"><%= post.user.name %></p>
                         <p class="subtitle is-6">
                             <%= link_to "@#{post.user.username}", profile_url(post.user.id) %>
                         </p>
@@ -54,7 +54,7 @@
         </div>
     <% end %>
 
-    <div class="card-content pt-0 pb-4 px-4">
+    <div class="card-content p-4 ">
         <% unless post.text.empty? %>
             <p class="post-content"><%= post.text %></p>
         <% end %>
