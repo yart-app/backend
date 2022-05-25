@@ -12,70 +12,70 @@
 
                     <%= f.file_field :avatar, id: "file-input", onchange: "readImageURL(this);" %>
                 </div>
-              <h3 class="title has-text-grey">Edit your profile</h3>
-                  <%= devise_error_messages! %>
+                <h3 class="title has-text-grey">Edit your profile</h3>
+                    <%= devise_error_messages! %>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
+                        </div>
+                    </div>
 
-                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                  <% end %>
+                    <% end %>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.text_field :username, class:"input is-large", placeholder: "User Name" %>
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.text_field :username, class:"input is-large", placeholder: "User Name" %>
+                        </div>
+                    </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.text_field :name, class:"input is-large", placeholder: "Name" %>
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.text_field :name, class:"input is-large", placeholder: "Name" %>
+                        </div>
+                    </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :current_password, autocomplete: "off", class:"input is-large", placeholder: "Current Password" %>
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.password_field :current_password, autocomplete: "off", class:"input is-large", placeholder: "Current Password" %>
+                        </div>
+                    </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
-                          <% if @minimum_password_length %>
-                              <em>(<%= @minimum_password_length %> characters minimum)</em>
-                          <% end %>
-                          <br />
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
+                            <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <br />
+                        </div>
+                    </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-large", placeholder: "Password Confirmation" %>
-                      </div>
-                  </div>
+                    <div class="field">
+                        <div class="control">
+                            <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-large", placeholder: "Password Confirmation" %>
+                        </div>
+                    </div>
 
-                  <%= f.submit "Update", class:"button is-block is-info is-large is-fullwidth" %>
-              <% end %>
+                    <%= f.submit "Update", class:"button is-block is-info is-large is-fullwidth" %>
+                <% end %>
 
-              <%= link_to "Back", :back %>
+                <%= link_to "Back", :back %>
             </div>
             <br />
             <div class="box">
-              <p>
-                Unhappy?
-                <%=
-                  button_to "Delete my account",
-                  registration_path(resource_name),
-                  data: { confirm: "Are you sure?" },
-                  method: :delete,
-                  class: "button is-block is-danger is-large is-fullwidth"
-                %>
-              </p>
+                <p>
+                    Unhappy?
+                    <%=
+                        button_to "Delete my account",
+                        registration_path(resource_name),
+                        data: { confirm: "Are you sure?" },
+                        method: :delete,
+                        class: "button is-block is-danger is-large is-fullwidth"
+                    %>
+                </p>
             </div>
         </div>
     </div>
