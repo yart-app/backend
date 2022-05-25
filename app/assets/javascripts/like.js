@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
         if (response.message === "liked") {
           icon = 'favorite';
         }
-        $('#likes-size-' + data.id).html(response.likes_size + " Likes");
+        $('#likes-size-' + data.id).html(response.likes_size);
         $(e.target).html(icon);
       }
     });
