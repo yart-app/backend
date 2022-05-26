@@ -1,4 +1,8 @@
 // Bulma by Jeremy Thomas. The source code is licensed MIT.
+.edit-user {
+    margin-top: 73px;
+}
+
 .hero.is-success {
     background: transparent !important;
 }
@@ -20,7 +24,7 @@
     border-radius: 50%;
     -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
     box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
-    width: 128px;
+    width: 108px;
 }
 
 input {

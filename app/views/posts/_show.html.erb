@@ -45,20 +45,22 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <% if post.project %>
+        <% if post.project %>
+            <div class="p-4">
                 <a class="button is-link is-small" href="/projects/<%= post.project.id %>">
                     <%= post.project.title %>
                 </a>
-            <% end %>
-        </div>
+            </div>
+        <% end %>
     <% end %>
 
-    <div class="card-content p-4 ">
-        <% unless post.text.empty? %>
+    <% unless post.text.empty? %>
+        <div class="card-content p-4 ">
             <p class="post-content"><%= post.text %></p>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 
     <%= render 'comments/create', post_id: post.id %>
 
