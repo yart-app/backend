@@ -30,9 +30,8 @@ body {
     height: 100%;
 }
 
-body section {
-    padding: 72px 10px 0px 10px;
-    margin-bottom: 72px;
+body > .container {
+    padding-top: 92px;
 }
 
 .signed-out body section {
@@ -191,5 +190,9 @@ body {
 @include touch {
     .navbar-brand {
         justify-content: center;
+    }
+
+    body > .container {
+        padding: 48px 16px;
     }
 }
