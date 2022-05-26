@@ -19,8 +19,10 @@
 //= require_tree .
 
 "use strict";
-$(document).on('turbolinks:load', function () {
-  var c, currentScrollTop = 0, navbar = $('.is-fixed-top');
+$(document).on("turbolinks:load", function () {
+  var c,
+    currentScrollTop = 0,
+    navbar = $(".is-fixed-top");
 
   $(window).scroll(function () {
     var a = $(window).scrollTop();
@@ -36,36 +38,35 @@ $(document).on('turbolinks:load', function () {
     c = currentScrollTop;
   });
 
-  $('.select2-with-create-option').select2({
-    tags: true
+  $(".select2-with-create-option").select2({
+    tags: true,
   });
 
-  $('.tabs').each(function (index) {
+  $(".tabs").each(function (index) {
     var $tabParent = $(this);
-    var $tabs = $tabParent.find('li');
-    var $contents = $tabParent.next('.tabs-content').find('.tab-content');
+    var $tabs = $tabParent.find("li");
+    var $contents = $tabParent.next(".tabs-content").find(".tab-content");
 
     $tabs.click(function () {
       var curIndex = $(this).index();
       // toggle tabs
-      $tabs.removeClass('is-active');
-      $tabs.eq(curIndex).addClass('is-active');
+      $tabs.removeClass("is-active");
+      $tabs.eq(curIndex).addClass("is-active");
       // toggle contents
-      $contents.removeClass('is-active');
-      $contents.eq(curIndex).addClass('is-active');
+      $contents.removeClass("is-active");
+      $contents.eq(curIndex).addClass("is-active");
     });
   });
 });
 
-
 // credits: https://github.com/turbolinks/turbolinks/issues/17#issuecomment-230169838
 Turbolinks.ProgressBar.prototype.refresh = function () {};
-Turbolinks.ProgressBar.defaultCSS = '';
+Turbolinks.ProgressBar.defaultCSS = "";
 
 Turbolinks.ProgressBar.prototype.uninstallProgressElement = function () {
-  $(document).find('.wait, .overlay').remove();
-}
+  $(document).find(".wait, .overlay").remove();
+};
 
 Turbolinks.BrowserAdapter.prototype.showProgressBarAfterDelay = function () {
-  return this.progressBarTimeout = setTimeout(this.showProgressBar, 50);
+  return (this.progressBarTimeout = setTimeout(this.showProgressBar, 50));
 };

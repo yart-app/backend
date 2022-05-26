@@ -1,18 +1,18 @@
 "use strict";
-$(document).on('turbolinks:load', function () {
-  $('.like').click(function (e) {
+$(document).on("turbolinks:load", function () {
+  $(".like").click(function (e) {
     var data = {
-      'id': e.target.id,
+      id: e.target.id,
     };
 
-    $.post('/posts/likes', data, function (response, status) {
+    $.post("/posts/likes", data, function (response, status) {
       if (status !== 422) {
-        var icon = 'favorite_border';
+        var icon = "favorite_border";
 
         if (response.message === "liked") {
-          icon = 'favorite';
+          icon = "favorite";
         }
-        $('#likes-size-' + data.id).html(response.likes_size);
+        $("#likes-size-" + data.id).html(response.likes_size);
         $(e.target).html(icon);
       }
     });
