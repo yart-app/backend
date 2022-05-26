@@ -34,6 +34,10 @@ body > .container {
     padding-top: 92px;
 }
 
+body > .container.wrapper {
+    max-width: 720px !important;
+}
+
 .signed-out body section {
     padding-top: 80px;
 }
