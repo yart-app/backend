@@ -60,9 +60,9 @@
         <% end %>
     </div>
 
+    <%= render 'comments/create', post_id: post.id %>
+
     <% unless post.comments.empty? %>
         <%= render 'comments/index', comments: post.limited_comments(page: 1), post_id: post.id %>
     <% end %>
-
-    <%= render 'comments/create', post_id: post.id %>
 </div>

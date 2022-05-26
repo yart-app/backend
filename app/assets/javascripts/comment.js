@@ -1,5 +1,15 @@
 "use strict";
 $(document).on('turbolinks:load', function () {
+  var commentTemplate = document.getElementById('comment-template');
+
+  function commentElement (user, text) {
+    var clone = commentTemplate.content.cloneNode(true);
+    $(clone).find('#comment-user').text(user);
+    $(clone).find('#comment-text').text(text);
+
+    return clone;
+  }
+
   function postComment(target, input) {
     var data = {
       'comment': {
@@ -16,12 +26,9 @@ $(document).on('turbolinks:load', function () {
         var commentCloseDiv = '</div>';
 
         commentsContainer.prepend(
-          commentOpenDiv +
-          "<strong>" +
-          response.comment.username +
-          ": </strong>" +
-          response.comment.text +
-          commentCloseDiv);
+          commentElement(response.comment.username, response.comment.text)
+        );
+
         input.val('');
       }
     });
@@ -43,12 +50,7 @@ $(document).on('turbolinks:load', function () {
 
         response.comments.forEach(function (comment) {
           commentsContainer.append(
-            commentOpenDiv +
-            "<strong>" +
-            comment.username +
-            ": </strong>" +
-            comment.text +
-            commentCloseDiv
+            commentElement(comment.username, comment.text)
           );
         });
 

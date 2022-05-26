@@ -10,6 +10,8 @@ class Comment < ApplicationRecord
   validate :belongs_to_post_or_project
   after_create :notify_user
 
+  default_scope { order('created_at DESC') }
+
   def self.add(data, user)
     comment = Comment.new(data)
     comment.user = user
