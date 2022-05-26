@@ -6,5 +6,8 @@
     "bulma-extensions": "^6.2.7",
     "intro.js": "^2.9.3",
     "select2": "^4.0.7"
+  },
+  "devDependencies": {
+    "prettier": "2.6.2"
   }
 }
