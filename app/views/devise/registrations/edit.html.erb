@@ -1,81 +1,75 @@
-<section class="is-success is-fullheight">
+<section class="edit-user is-success is-fullheight">
     <div class="has-text-centered">
-        <div class="column is-4 is-offset-4">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="box">
                 <div class="image-upload">
                     <label for="file-input">
                     <figure class="avatar">
-                        <%= user_avatar(resource, class: "uploaded-image") %>
+                        <%= user_avatar(resource, class: "uploaded-image is-48x48") %>
                     </figure>
                     </label>
 
                     <%= f.file_field :avatar, id: "file-input", onchange: "readImageURL(this);" %>
                 </div>
-              <h3 class="title has-text-grey">Edit your profile</h3>
-                  <%= devise_error_messages! %>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.email_field :email, autocomplete: "email", class:"input is-large", placeholder: "Email" %>
-                      </div>
-                  </div>
+                <h4 class="title has-text-grey is-4">Edit your profile</h4>
+                <div class="mb-4 has-text-danger"><%= devise_error_messages! %></div>
 
-                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div class="field">
+                    <div class="control">
+                        <%= f.email_field :email, autocomplete: "email", class:"input is-medium", placeholder: "Email" %>
+                    </div>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                  <% end %>
+                <% end %>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.text_field :username, class:"input is-large", placeholder: "User Name" %>
-                      </div>
-                  </div>
+                <div class="field">
+                    <div class="control">
+                        <%= f.text_field :username, class:"input is-medium", placeholder: "User Name" %>
+                    </div>
+                </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.text_field :name, class:"input is-large", placeholder: "Name" %>
-                      </div>
-                  </div>
+                <div class="field">
+                    <div class="control">
+                        <%= f.text_field :name, class:"input is-medium", placeholder: "Name" %>
+                    </div>
+                </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :current_password, autocomplete: "off", class:"input is-large", placeholder: "Current Password" %>
-                      </div>
-                  </div>
+                <div class="field">
+                    <div class="control">
+                        <%= f.password_field :current_password, autocomplete: "off", class:"input is-medium", placeholder: "Current Password" %>
+                    </div>
+                </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :password, autocomplete: "off", class:"input is-large", placeholder: "Password" %>
-                          <% if @minimum_password_length %>
-                              <em>(<%= @minimum_password_length %> characters minimum)</em>
-                          <% end %>
-                          <br />
-                      </div>
-                  </div>
+                <div class="field">
+                    <div class="control">
+                        <%= f.password_field :password, autocomplete: "off", class:"input is-medium", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+                    </div>
+                </div>
 
-                  <div class="field">
-                      <div class="control">
-                          <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-large", placeholder: "Password Confirmation" %>
-                      </div>
-                  </div>
+                <div class="field">
+                    <div class="control">
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class:"input is-medium", placeholder: "Password Confirmation" %>
+                    </div>
+                </div>
 
-                  <%= f.submit "Update", class:"button is-block is-info is-large is-fullwidth" %>
-              <% end %>
-
-              <%= link_to "Back", :back %>
+                <%= f.submit "Update", class:"button is-block is-large is-fullwidth is-primary" %>
+                <% end %>
             </div>
             <br />
-            <div class="box">
-              <p>
-                Unhappy?
-                <%=
-                  button_to "Delete my account",
-                  registration_path(resource_name),
-                  data: { confirm: "Are you sure?" },
-                  method: :delete,
-                  class: "button is-block is-danger is-large is-fullwidth"
-                %>
-              </p>
+            <div class="has-text-white">
+                <p>
+                    Unhappy?
+                    <%=
+                        link_to "Delete my account",
+                        registration_path(resource_name),
+                        data: { confirm: "Are you sure?" },
+                        method: :delete,
+                        class: "has-text-white is-underlined"
+                    %>
+                </p>
             </div>
         </div>
     </div>

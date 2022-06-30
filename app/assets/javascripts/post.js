@@ -4,8 +4,8 @@ function readImageURL(input) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      $('.uploaded-image').attr('src', e.target.result);
-      $('.uploaded-image').removeAttr("style");
+      $(".uploaded-image").attr("src", e.target.result);
+      $(".uploaded-image").removeAttr("style");
     };
 
     reader.readAsDataURL(input.files[0]);
@@ -13,15 +13,15 @@ function readImageURL(input) {
 }
 
 function runIntoJsOnSubmitBtn() {
-  var onboarded = $('.onboarded').val();
+  var onboarded = $(".onboarded").val();
 
   if (onboarded == "false") {
     // Use setTimeOut here to wait for dom to update before
     // starting introJs and focus on submit button
 
-    setTimeout(function() {
+    setTimeout(function () {
       introJs().setOptions({
-        'scrollTo': $('.submit'),
+        scrollTo: $(".submit"),
       });
 
       introJs().goToStepNumber(5).start();

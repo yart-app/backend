@@ -1,30 +1,5 @@
 
 <div class="card post-card">
-<% if with_user_data %>
-  <div class="header">
-    <div class="media">
-        <a href="<%= profile_url(post.user.id) %>" style="display:block;">
-        <div class="media-left">
-            <figure class="image is-48x48 user-avatar">
-                <%= user_avatar(post.user) %>
-            </figure>
-        </div>
-        <div class="media-content">
-            <p class="title is-4"><%= post.user.name %></p>
-            <p class="subtitle is-6">
-            <%= link_to "@#{post.user.username}", profile_url(post.user.id) %>
-            </p>
-        </div>
-        </a>
-        <% if post.project %>
-        <a class="button is-link is-small" href="/projects/<%= post.project.id %>">
-        <%= post.project.title %>
-        </a>
-        <% end %>
-        <%# <time datetime="2018-1-1"><%= post.created_at.strftime('%b / %Y') %></time>
-    </div>
-    </div>
-    <% end %>
     <% if post.image.attached? %>
         <div class="card-image">
             <figure class="image">
@@ -32,62 +7,62 @@
             </figure>
         </div>
     <% end %>
-    <div class="card-content">
-        <% unless post.text.empty? %>
-            <div class="post-content"><%= post.text %></div>
-        <% end %>
-        <div class="level is-mobile">
-            <div class="level-left">
-                <div class="level-item has-text-centered">
-                    <i class="material-icons like" id="<%= post.id %>">
-                        <%= favorite_icon(post) %>
-                    </i>
-                    <strong class="likes-size" id="likes-size-<%= post.id %>">
-                        <%= post.get_ups.size %> Likes
-                    </strong>
-                </div>
-                <div class="level-item has-text-centered is-hidden-desktop">
-                    <i class="material-icons share-button" data-url="<%= post.url %>" data-text="<%= post.text %>">
-                        share
-                    </i>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <% comments = post.limited_comments(page: 1) %>
+    <% if with_user_data %>
+        <div class="media m-0 pt-4 px-4">
+            <a href="<%= profile_url(post.user.id) %>">
+                <div class="media-left">
+                    <figure class="image is-48x48 user-avatar">
+                        <%= user_avatar(post.user) %>
+                    </figure>
+                </div>
 
-    <div id="comments_container_<%= post.id %>">
-        <% comments[:chunk].each do |comment| %>
-            <div class="comment-section">
-                <strong><%= comment.user.name %>: </strong><%= comment.text %>
-            </div>
-        <% end %>
-    </div>
-    <input
-        type="text"
-        class="hidden"
-        autocomplete="off"
-        id="page_<%= post.id %>"
-        value="1"
-    >
-    <div class="has-text-centered more-comments <%= "hidden" if comments[:next] == 0 %>" id="<%= post.id %>">
-        <i class="material-icons" id="<%= post.id %>">more_horiz</i>
-    </div>
-    <div>
-        <div class="">
-            <div class="">
-                <div class="field">
-                    <div class="control">
-                        <input
-                            id="<%= post.id %>"
-                            class="input add-comment comment-section"
-                            type="text"
-                            placeholder="Add a comment . . ."
-                        >
+                <div class="media-content">
+                    <div class="is-flex">
+                        <p class="title is-6 mr-1"><%= post.user.name %></p>
+                        <p class="subtitle is-6">
+                            <%= link_to "@#{post.user.username}", profile_url(post.user.id) %>
+                        </p>
+                    </div>
+                    <time datetime="2018-1-1"><%= post.created_at.strftime('%b / %Y') %></time>
+                </div>
+            </a>
+
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <div class="level-item has-text-centered">
+                        <i class="material-icons like" id="<%= post.id %>">
+                            <%= favorite_icon(post) %>
+                        </i>
+                        <strong class="likes-size" id="likes-size-<%= post.id %>">
+                            <%= post.get_ups.size %>
+                        </strong>
+                    </div>
+                    <div class="level-item has-text-centered is-hidden-desktop">
+                        <i class="material-icons share-button" data-url="<%= post.url %>" data-text="<%= post.text %>">
+                            share
+                        </i>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <% if post.project %>
+            <div class="p-4">
+                <a class="button is-link is-small" href="/projects/<%= post.project.id %>">
+                    <%= post.project.title %>
+                </a>
+            </div>
+        <% end %>
+    <% end %>
+
+    <% unless post.text.empty? %>
+        <div class="card-content p-4 ">
+            <p class="post-content"><%= post.text %></p>
+        </div>
+    <% end %>
+
+    <%= render 'comments/create', post_id: post.id %>
+
+    <%= render 'comments/index', comments: post.limited_comments(page: 1), post_id: post.id %>
 </div>

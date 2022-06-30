@@ -1,7 +1,7 @@
 function toggleFollow(id, button) {
   var data = {
-    id: id
-  }
+    id: id,
+  };
 
   var url = "/users/toggle_follow/";
 

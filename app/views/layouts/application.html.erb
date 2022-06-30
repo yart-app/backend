@@ -1,38 +1,30 @@
 <!DOCTYPE html>
-<% if user_signed_in? %>
-<html  class="signed-in">
-<% else %>
-<html  class="signed-out">
-<% end %>
+<html  class="<%= user_signed_in? ? 'signed-in' : 'signed-out' %>">
 <head>
-    <title>Yart</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"></head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= csrf_meta_tags %>
+
+    <title>Yart</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <script>
-        window.vapidPublicKey = new Uint8Array(<%= Rails.application.credentials.vapid_public_key %>);
-    </script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/manifest.json" rel="manifest" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.vapidPublicKey = new Uint8Array(<%= Rails.application.credentials.vapid_public_key %>);</script>
 
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<link rel="manifest" href="/manifest.json" />
-<meta name="apple-mobile-web-app-capable" content="yes"></head>
-    <body>
+<head>
+<body>
     <%= render "header" %>
 
-    <section>
-        <div class="container wrapper">
-            <%= yield %>
-        </div>
-    </section>
+    <div class="container wrapper">
+        <%= yield %>
+    </div>
 
     <%= render "mobile_navbar" %>
 </body>

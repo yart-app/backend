@@ -1,35 +1,40 @@
 "use strict";
 
-$(document).on('turbolinks:load', function () {
+$(document).on("turbolinks:load", function () {
   startOnboarding();
 });
 
 function startOnboarding() {
-  var onboarded = $('.onboarded').val();
+  var onboarded = $(".onboarded").val();
 
-  if (onboarded == 'false') {
+  if (onboarded == "false") {
     var intro = introJs();
 
     intro.setOptions({
-      steps: [{
-          intro: '<img src="/assets/intro-1.jpg" /><br /><h3>Welcome to Yart</h3> a community by yarn artists for yarn artists!'
+      steps: [
+        {
+          intro:
+            '<img src="/assets/intro-1.jpg" /><br /><h3>Welcome to Yart</h3> a community by yarn artists for yarn artists!',
         },
         {
-          intro: '<img src="/assets/intro-2.jpg" /><br /><h2>Projects</h2> you can share your crochet, knitting, weaving or embroidery projects with your friends'
+          intro:
+            '<img src="/assets/intro-2.jpg" /><br /><h2>Projects</h2> you can share your crochet, knitting, weaving or embroidery projects with your friends',
         },
         {
-          intro: '<img src="/assets/intro-3.jpg" /><br /><h2>Tools</h2> you can also share tools you are using in your projects, like patterns, yarn information and fabric you use.'
+          intro:
+            '<img src="/assets/intro-3.jpg" /><br /><h2>Tools</h2> you can also share tools you are using in your projects, like patterns, yarn information and fabric you use.',
         },
         {
-          intro: '<img src="/assets/intro-4.jpg" /><br /><h2>Start!</h2> share your progress with us and lets have fun!'
-        }
-      ]
+          intro:
+            '<img src="/assets/intro-4.jpg" /><br /><h2>Start!</h2> share your progress with us and lets have fun!',
+        },
+      ],
     });
 
-    intro.setOption('exitOnOverlayClick', '');
-    intro.setOption('showStepNumbers', '');
-    intro.setOption('exitOnEsc', '');
-    intro.setOption('tooltipClass', 'tooltip-class');
+    intro.setOption("exitOnOverlayClick", "");
+    intro.setOption("showStepNumbers", "");
+    intro.setOption("exitOnEsc", "");
+    intro.setOption("tooltipClass", "tooltip-class");
 
     intro.start();
 
@@ -41,7 +46,7 @@ function startOnboarding() {
 }
 
 function finishOnboarding() {
-  $.post('/users/onboarding/finish', {}, function (response, status) {
+  $.post("/users/onboarding/finish", {}, function (response, status) {
     console.log(response);
   });
 }

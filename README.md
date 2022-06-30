@@ -24,6 +24,9 @@ Contribution to this project will be always welcoming, however right now we need
 ### Database creation:
 The used database is PostgreSQL so all you need is to run `rails db:migrate` in order to create the db.
 
+### Seeding database with demo data:
+`rake db:seed` or `docker exec -it yart-backend-app-1 sh -c "rake db:seed"`
+
 ### Database initialization:
 ...
 
