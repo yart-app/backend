@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.find_or_create_by(username: 'john_doe')
+user = User.find_or_initialize_by(username: 'john_doe', name: "John Doe", email: "admin@yart.app")
+user.password = "123456"
+user.save!
 
 titles = [
   "Consequatur officiis aut amet nihil consequatur mollitia ut. Nesciunt officiis rerum autem. Ea odio dolor eum.",
